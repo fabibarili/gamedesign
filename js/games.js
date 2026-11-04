@@ -14,12 +14,12 @@
 
 const PROFILE = {
   name: "Fabi Barili",
-  role: "Senior Game Designer",
+  role: "Game Designer",
   photo: "assets/foto.jpg",
   bio: [
     {
-      pt: "Senior Game Designer no Brasil com mais de 5 anos de experiência na indústria de jogos mobile. Atuo em todo o ciclo de desenvolvimento — do conceito e design de sistemas ao lançamento global e à gestão de live ops.",
-      en: "Senior Game Designer based in Brazil with over 5 years of experience in the mobile gaming industry. My work covers the full lifecycle of game development, from initial concept and systems design to global launch and live operations.",
+      pt: "Game Designer no Brasil com mais de 5 anos de experiência na indústria de jogos mobile. Atuo em todo o ciclo de desenvolvimento — do conceito e design de sistemas ao lançamento global e à gestão de live ops.",
+      en: "Game Designer based in Brazil with over 5 years of experience in the mobile gaming industry. My work covers the full lifecycle of game development, from initial concept and systems design to global launch and live operations.",
     },
     {
       pt: "Desenho sistemas e resolvo problemas centrais de design para impulsionar retenção, engajamento e receita, conectando a visão criativa aos objetivos de negócio.",
