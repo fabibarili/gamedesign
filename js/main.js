@@ -26,7 +26,9 @@
       team: "Time",
       platform: "Plataforma",
       tools: "Ferramentas",
-      gallery: "Galeria",
+      playVideo: "Assistir ao vídeo",
+      getItOn: "Disponível no",
+      downloadOn: "Baixar na",
       prev: "← Anterior",
       next: "Próximo →",
       notFound: "Projeto não encontrado",
@@ -56,7 +58,9 @@
       team: "Team",
       platform: "Platform",
       tools: "Tools",
-      gallery: "Gallery",
+      playVideo: "Play video",
+      getItOn: "Get it on",
+      downloadOn: "Download on the",
       prev: "← Previous",
       next: "Next →",
       notFound: "Project not found",
@@ -88,6 +92,21 @@
 
   const linkBtn = (l, cls = "btn") =>
     `<a class="${cls}" href="${esc(l.url)}" target="_blank" rel="noopener">${esc(l.label)} ↗</a>`;
+  const STORE_ICONS = {
+    google: '<path d="M22.018 13.298l-3.919 2.218-3.515-3.493 3.543-3.521 3.891 2.202a1.49 1.49 0 0 1 0 2.594zM1.337.924a1.486 1.486 0 0 0-.112.568v21.017c0 .217.045.419.124.6l11.155-11.087L1.337.924zm12.207 10.065l3.258-3.238L3.45.195a1.466 1.466 0 0 0-.946-.179l11.04 10.973zm0 2.067l-11 10.933c.298.036.612-.016.906-.183l13.324-7.54-3.23-3.21z"/>',
+    apple: '<path d="M12.152 6.896c-.948 0-2.415-1.078-3.96-1.04-2.04.027-3.91 1.183-4.961 3.014-2.117 3.675-.546 9.103 1.519 12.09 1.013 1.454 2.208 3.09 3.792 3.039 1.52-.065 2.09-.987 3.935-.987 1.831 0 2.35.987 3.96.948 1.637-.026 2.676-1.48 3.676-2.948 1.156-1.688 1.636-3.325 1.662-3.415-.039-.013-3.182-1.221-3.22-4.857-.026-3.04 2.48-4.494 2.597-4.559-1.429-2.09-3.623-2.324-4.39-2.376-2-.156-3.675 1.09-4.61 1.09zM15.53 3.83c.843-1.012 1.4-2.427 1.245-3.83-1.207.052-2.662.805-3.532 1.818-.78.896-1.454 2.338-1.273 3.714 1.338.104 2.715-.688 3.559-1.701"/>',
+  };
+  // Selo da loja (Google Play / App Store) ou botão comum
+  const storeLink = (l) =>
+    STORE_ICONS[l.store]
+      ? `<a class="store-badge" href="${esc(l.url)}" target="_blank" rel="noopener" aria-label="${esc(l.label)}">
+          <svg viewBox="0 0 24 24" aria-hidden="true">${STORE_ICONS[l.store]}</svg>
+          <span><small>${ui(l.store === "apple" ? "downloadOn" : "getItOn")}</small>${esc(l.label)}</span>
+        </a>`
+      : linkBtn(l);
+  const toolList = (tools) =>
+    String(t(tools) || "").split(",").map((x) => x.trim()).filter(Boolean);
+
   const tagList = (tags) =>
     `<div class="tags">${(tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>`;
 
@@ -194,8 +213,20 @@
       [ui("role"), g.role],
       [ui("team"), g.team],
       [ui("platform"), g.platform],
-      [ui("tools"), g.tools],
     ].filter(([, v]) => t(v));
+
+    // Ferramentas entram logo depois da seção "Responsabilidades"
+    // (ou da primeira seção com lista, se não houver uma com esse título)
+    const sections = g.sections || [];
+    let toolsAt = sections.findIndex((s) => typeof H !== "undefined" && s.heading === H.role);
+    if (toolsAt < 0) toolsAt = sections.findIndex((s) => s.items && s.items.length);
+    if (toolsAt < 0) toolsAt = sections.length - 1;
+    const tools = toolList(g.tools);
+    const toolsHtml = tools.length ? `
+            <section class="game-section reveal">
+              <h2>${ui("tools")}</h2>
+              <div class="tool-tags">${tools.map((x) => `<span class="tool-tag">${esc(x)}</span>`).join("")}</div>
+            </section>` : "";
 
     gameEl.innerHTML = `
       <a class="back" href="index.html#projetos">${ui("back")}</a>
@@ -206,27 +237,27 @@
         <article>
           <h1 class="game-title">${esc(g.title)}</h1>
           <p class="game-tagline">${esc(g.tagline)}</p>
-          ${(g.sections || []).map((s) => `
+          ${sections.map((s, i) => `
             <section class="game-section reveal">
               <h2>${esc(s.heading)}</h2>
               ${t(s.body) ? `<p>${esc(s.body)}</p>` : ""}
-              ${s.items && s.items.length ? `<ul>${s.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` : ""}
-            </section>`).join("")}
+              ${s.items && s.items.length ? `<ul>${s.items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+            </section>${i === toolsAt ? toolsHtml : ""}`).join("")}
+          ${!sections.length ? toolsHtml : ""}
           ${g.video ? `
             <section class="game-section reveal">
               <h2>${ui("video")}</h2>
-              <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/${encodeURIComponent(g.video)}" title="${esc(g.title)}" loading="lazy" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe></div>
-            </section>` : ""}
-          ${g.gallery && g.gallery.length ? `
-            <section class="game-section reveal">
-              <h2>${ui("gallery")}</h2>
-              <div class="gallery">${g.gallery.map((src) => `<a href="${esc(src)}" target="_blank" rel="noopener"><img src="${esc(src)}" alt="" loading="lazy" /></a>`).join("")}</div>
+              <div class="video">
+                <button type="button" class="video-play" data-video="${esc(encodeURIComponent(g.video))}" aria-label="${ui("playVideo")}: ${esc(g.title)}">
+                  <img src="https://i.ytimg.com/vi/${encodeURIComponent(g.video)}/hqdefault.jpg" alt="" loading="lazy" />
+                  <span class="play-icon" aria-hidden="true"></span>
+                </button>
+              </div>
             </section>` : ""}
         </article>
         <aside class="facts">
           <dl>${facts.map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-          ${tagList(g.tags)}
-          ${g.links && g.links.length ? `<div class="hero-links">${g.links.map((l, i) => linkBtn(l, i === 0 ? "btn primary" : "btn")).join("")}</div>` : ""}
+          ${g.links && g.links.length ? `<div class="store-links">${g.links.map(storeLink).join("")}</div>` : ""}
         </aside>
       </div>
       ${GAMES.length > 1 ? `
@@ -259,10 +290,17 @@
     const gameEl = $("#game");
     if (gameEl) renderGame(gameEl);
     setupReveal(instant);
-    // Imagens muito largas (banners) ocupam a linha inteira da galeria
-    document.querySelectorAll(".gallery img").forEach((img) => {
-      const mark = () => img.naturalWidth / img.naturalHeight > 1.9 && img.parentElement.classList.add("wide");
-      img.complete ? mark() : img.addEventListener("load", mark, { once: true });
+  }
+
+  // Clique no vídeo (o vídeo toca na própria página)
+  const gameRoot = $("#game");
+  if (gameRoot) {
+    gameRoot.addEventListener("click", (ev) => {
+      const play = ev.target.closest(".video-play");
+      if (play) {
+        const id = play.dataset.video;
+        play.parentElement.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&playsinline=1" title="${play.getAttribute("aria-label")}" referrerpolicy="strict-origin-when-cross-origin" allow="autoplay; accelerometer; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>`;
+      }
     });
   }
 

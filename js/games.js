@@ -211,22 +211,18 @@ const EXPERIENCE = [
  *  year        ano (opcional)
  *  role        seu papel no projeto
  *  platform    plataformas
- *  tools       ferramentas usadas
- *  tags        lista de gêneros/temas
+ *  tools       ferramentas usadas (viram tags depois das Responsabilidades)
+ *  tags        características do jogo (gênero, modelo, plataforma) — aparecem só no card
  *  cover       imagem de capa do card (assets/...)
  *  hero        imagem larga do topo da página do jogo (opcional; usa a capa se faltar)
  *  color       cor de fundo (aparece enquanto a imagem carrega)
  *  video       ID de um vídeo do YouTube (opcional)
- *  links       botões (lojas, Behance, etc.)
+ *  links       botões: googlePlay(url) / appStore(url) viram o selo da loja;
+ *              { label, url } vira um botão comum (ex: site do jogo)
  *  sections    blocos de texto: { heading, body } e/ou { heading, items: [...] }
- *  gallery     imagens extras (opcional)
  */
-// gallery("energy", 5, 2) → imagens 2 a 5 de assets/gallery/energy/
-const gallery = (id, n, from = 1) =>
-  Array.from({ length: n - from + 1 }, (_, i) => `assets/gallery/${id}/${i + from}.webp`);
-const behance = (url) => ({ label: { pt: "Ver no Behance", en: "View on Behance" }, url });
-const googlePlay = (url) => ({ label: "Google Play", url });
-const appStore = (url) => ({ label: "App Store", url });
+const googlePlay = (url) => ({ store: "google", label: "Google Play", url });
+const appStore = (url) => ({ store: "apple", label: "App Store", url });
 
 const H = {
   overview: { pt: "Sobre o jogo", en: "About the game" },
@@ -245,14 +241,13 @@ const GAMES = [
     role: "Mid-Game Designer",
     platform: "Android, iOS",
     tools: "Unity, Miro, Asana, Google Sheets",
-    tags: ["Puzzle", { pt: "Palavras", en: "Word" }, "Mobile F2P"],
+    tags: ["Puzzle", { pt: "Palavras", en: "Word" }, "Mobile", "Free to Play"],
     cover: "assets/covers/colorwood.webp",
     color: "#e9dcc7",
     video: "ZLbdQBRAxnI",
     links: [
       googlePlay("https://play.google.com/store/apps/details?id=games.burny.associations.word.puzzle"),
       appStore("https://apps.apple.com/us/app/associations-colorwood-game/id6749696890"),
-      behance("https://www.behance.net/gallery/232339921/Mobile-Game-Colorwood-Associations-Words"),
     ],
     sections: [
       {
@@ -288,7 +283,6 @@ const GAMES = [
         ],
       },
     ],
-    gallery: gallery("colorwood", 4),
   },
   {
     id: "energy-anti-stress-loops",
@@ -301,7 +295,7 @@ const GAMES = [
     role: "Mid-Game Designer",
     platform: "Android, iOS",
     tools: "Miro, Asana, Spreadsheets, Game Analytics, Firebase, Typeform",
-    tags: ["Puzzle", "Live Ops", { pt: "Testes A/B", en: "A/B Testing" }],
+    tags: ["Puzzle", { pt: "Relaxante", en: "Relaxing" }, "Mobile", "Free to Play"],
     cover: "assets/covers/energy.webp",
     hero: "assets/gallery/energy/1.webp",
     color: "#1b1d3a",
@@ -309,7 +303,6 @@ const GAMES = [
     links: [
       googlePlay("https://play.google.com/store/apps/details?id=com.infinitygames.loopenergy"),
       appStore("https://apps.apple.com/us/app/energy-anti-stress-loops/id1301967636"),
-      behance("https://www.behance.net/gallery/195202037/Mobile-Game-Energy-Anti-Stress-Loops"),
     ],
     sections: [
       {
@@ -360,7 +353,6 @@ const GAMES = [
         },
       },
     ],
-    gallery: gallery("energy", 5, 2),
   },
   {
     id: "music-tower",
@@ -373,14 +365,13 @@ const GAMES = [
     role: "Mid-Game Designer",
     platform: "Android, iOS",
     tools: "Unity, Figma, Miro, Asana, Spreadsheets, Game Analytics",
-    tags: [{ pt: "Música", en: "Music" }, "FTUE", { pt: "Monetização", en: "Monetization" }],
+    tags: [{ pt: "Música", en: "Music" }, "Casual", "Mobile", "Free to Play"],
     cover: "assets/covers/music-tower.webp",
     hero: "assets/gallery/music-tower/1.webp",
     color: "#f3c6d6",
     links: [
       googlePlay("https://play.google.com/store/apps/details?id=com.twelvemoments.musicparty"),
       appStore("https://apps.apple.com/us/app/music-tower-tap-tiles/id1510739277"),
-      behance("https://www.behance.net/gallery/186461221/Mobile-Game-Music-Tower-Guitar-Piano-Tap-Tiles"),
     ],
     sections: [
       {
@@ -430,7 +421,6 @@ const GAMES = [
         },
       },
     ],
-    gallery: gallery("music-tower", 6, 2),
   },
   {
     id: "pet-shop-fever",
@@ -443,13 +433,12 @@ const GAMES = [
     role: "Game Designer",
     platform: "Android",
     tools: "Unity, Miro, Spreadsheets, Figma, Photoshop, ClickUp, Firebase",
-    tags: [{ pt: "Gerenciamento de tempo", en: "Time management" }, "Casual", "Mobile F2P"],
+    tags: [{ pt: "Gerenciamento de tempo", en: "Time management" }, "Casual", "Mobile", "Free to Play"],
     cover: "assets/covers/pet-shop-fever.webp",
     hero: "assets/gallery/pet-shop-fever/1.webp",
     color: "#bfe3f2",
     links: [
       googlePlay("https://play.google.com/store/apps/details?id=com.tapps.virtual.pet.hotel.games.world"),
-      behance("https://www.behance.net/gallery/180477991/Mobile-Game-Pet-Shop-Fever-Hotel-Animal"),
     ],
     sections: [
       {
@@ -481,7 +470,6 @@ const GAMES = [
         ],
       },
     ],
-    gallery: gallery("pet-shop-fever", 3, 2),
   },
   {
     id: "dino-quest-2",
@@ -494,14 +482,13 @@ const GAMES = [
     role: "Game Designer",
     platform: "Android, iOS",
     tools: "Unity, Firebase, Miro, Figma, Spreadsheets, ClickUp",
-    tags: [{ pt: "Coleção", en: "Collection" }, "Casual", "Mobile F2P"],
+    tags: [{ pt: "Coleção", en: "Collection" }, "Casual", "Mobile", "Free to Play"],
     cover: "assets/covers/dino-quest-2.webp",
     hero: "assets/gallery/dino-quest-2/1.webp",
     color: "#cfe7b8",
     links: [
       googlePlay("https://play.google.com/store/apps/details?id=com.tapps.games.dig.dinoquest2"),
       appStore("https://apps.apple.com/br/app/dino-quest-2-museu-jur%C3%A1ssico/id1580107903"),
-      behance("https://www.behance.net/gallery/180452273/Mobile-Game-Dino-Quest-2-Dinosaur-Games"),
     ],
     sections: [
       {
@@ -537,7 +524,6 @@ const GAMES = [
         ],
       },
     ],
-    gallery: gallery("dino-quest-2", 6, 2),
   },
   {
     id: "baneville",
@@ -550,14 +536,13 @@ const GAMES = [
     role: { pt: "Game Designer & Roteirista", en: "Game Designer & Writer" },
     platform: "Web, Android, iOS",
     tools: "Unity",
-    tags: [{ pt: "Educativo", en: "Educational" }, { pt: "Narrativa", en: "Narrative" }],
+    tags: [{ pt: "Educativo", en: "Educational" }, { pt: "Narrativa", en: "Narrative" }, "Web & Mobile"],
     cover: "assets/covers/baneville.webp",
     hero: "assets/gallery/baneville/2.webp",
     color: "#2b3a55",
     video: "so12PGPdolA",
     links: [
       { label: { pt: "Site do jogo", en: "Game website" }, url: "https://baneville.educacao.rs.gov.br/" },
-      behance("https://www.behance.net/gallery/181289761/Mobile-Game-Baneville"),
     ],
     sections: [
       {
@@ -582,7 +567,6 @@ const GAMES = [
         ],
       },
     ],
-    gallery: ["assets/gallery/baneville/1.webp", "assets/gallery/baneville/3.webp"],
   },
   {
     id: "neat-nexus",
@@ -595,14 +579,13 @@ const GAMES = [
     role: "Mid-Game Designer",
     platform: "Android, iOS",
     tools: "Asana, Miro, Spreadsheets",
-    tags: ["Tower Defense", { pt: "Estratégia", en: "Strategy" }, { pt: "Balanceamento", en: "Balancing" }],
+    tags: ["Idle", "Tower Defense", "Mobile", "Free to Play"],
     cover: "assets/covers/neat-nexus.webp",
     color: "#10141f",
     video: "vBNBuzEfT-U",
     links: [
       googlePlay("https://play.google.com/store/apps/details?id=com.infinitygames.NeatNexus"),
       appStore("https://apps.apple.com/us/app/neat-nexus-idle-tower-defense/id1670950808"),
-      behance("https://www.behance.net/gallery/225439979/Mobile-Game-Neat-Nexus"),
     ],
     sections: [
       {
@@ -649,7 +632,6 @@ const GAMES = [
         },
       },
     ],
-    gallery: gallery("neat-nexus", 5),
   },
   {
     id: "gaiah",
@@ -662,11 +644,11 @@ const GAMES = [
     role: { pt: "Game Designer (freelancer)", en: "Game Designer (freelance)" },
     team: { pt: "Freelance · 2 meses", en: "Freelance · 2 months" },
     platform: "iOS",
-    tags: ["RPG", { pt: "Geolocalização", en: "Location-based" }, "UX"],
+    tags: ["RPG", { pt: "Geolocalização", en: "Location-based" }, "Mobile"],
     cover: "assets/covers/gaiah.webp",
     hero: "assets/gallery/gaiah/1.webp",
     color: "#1d2b22",
-    links: [behance("https://www.behance.net/gallery/201638433/Mobile-Game-Gaiah")],
+    links: [],
     sections: [
       {
         heading: H.overview,
@@ -683,7 +665,6 @@ const GAMES = [
         },
       },
     ],
-    gallery: gallery("gaiah", 3, 2),
   },
   {
     id: "city-crush",
@@ -696,10 +677,10 @@ const GAMES = [
     role: "Game Designer",
     platform: "Mobile",
     tools: "Unity",
-    tags: [{ pt: "Aventura", en: "Adventure" }, "Level Design", "Mobile F2P"],
+    tags: [{ pt: "Aventura", en: "Adventure" }, "Casual", "Mobile", "Free to Play"],
     cover: "assets/covers/city-crush.webp",
     color: "#3a2a4d",
-    links: [behance("https://www.behance.net/gallery/180479597/Mobile-Game-City-Crush")],
+    links: [],
     sections: [
       {
         heading: H.overview,
@@ -722,7 +703,6 @@ const GAMES = [
         ],
       },
     ],
-    gallery: gallery("city-crush", 4),
   },
   {
     id: "chess-multiplayer",
@@ -735,10 +715,10 @@ const GAMES = [
     role: "Mid-Game Designer",
     platform: "HTML5 · Poki",
     tools: "Miro, Asana, Spreadsheets, Game Analytics",
-    tags: ["Web", "Multiplayer", { pt: "Tabuleiro", en: "Board game" }],
+    tags: [{ pt: "Tabuleiro", en: "Board game" }, "Multiplayer", "HTML5"],
     cover: "assets/covers/chess.webp",
     color: "#22252e",
-    links: [behance("https://www.behance.net/gallery/224787953/Web-Game-Chess-Multiplayer")],
+    links: [],
     sections: [
       {
         heading: H.overview,
@@ -790,7 +770,6 @@ const GAMES = [
         ],
       },
     ],
-    gallery: gallery("chess", 6),
   },
   {
     id: "tic-tac-toe",
@@ -803,10 +782,10 @@ const GAMES = [
     role: "Mid-Game Designer",
     platform: "HTML5 · Poki",
     tools: "Miro, Asana, Spreadsheets, Game Analytics",
-    tags: ["Web", "Multiplayer", "Casual"],
+    tags: ["Casual", "Multiplayer", "HTML5"],
     cover: "assets/covers/tic-tac-toe.webp",
     color: "#171c45",
-    links: [behance("https://www.behance.net/gallery/225365227/Web-Game-Tic-Tac-Toe")],
+    links: [],
     sections: [
       {
         heading: H.overview,
@@ -841,6 +820,5 @@ const GAMES = [
         ],
       },
     ],
-    gallery: gallery("tic-tac-toe", 5),
   },
 ];
