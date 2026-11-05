@@ -138,20 +138,34 @@
     ).join("");
 
     const exp = typeof EXPERIENCE !== "undefined" ? EXPERIENCE : [];
+    const list = $("#experience");
+    // Mantém abertos os itens que já estavam abertos (ex.: ao trocar de idioma)
+    const open = new Set(
+      [...list.querySelectorAll('.exp-trigger[aria-expanded="true"]')].map((b) => b.dataset.i)
+    );
     $("#experiencia").hidden = !exp.length;
-    $("#experience").classList.toggle("no-periods", !exp.some((e) => t(e.period)));
-    $("#experience").innerHTML = exp.map(
-      (e) => `
-      <li class="timeline-item reveal">
-        <div class="timeline-period">${esc(e.period)}</div>
-        <div>
-          <h3>${esc(e.role)}</h3>
-          <div class="timeline-company">${esc(e.company)}${t(e.location) ? ` · ${esc(e.location)}` : ""}</div>
-          ${t(e.description) ? `<p>${esc(e.description)}</p>` : ""}
-          ${e.items && e.items.length ? `<ul class="timeline-list">${e.items.map((i) => `<li>${esc(i)}</li>`).join("")}</ul>` : ""}
+    list.innerHTML = exp.map((e, i) => {
+      const isOpen = open.has(String(i));
+      const meta = [t(e.period), t(e.location)].filter(Boolean).map((x) => esc(x));
+      return `
+      <li class="exp-item reveal${isOpen ? " open" : ""}">
+        <h3>
+          <button class="exp-trigger" type="button" data-i="${i}" aria-expanded="${isOpen}" aria-controls="exp-panel-${i}" id="exp-btn-${i}">
+            <span class="exp-title">${esc(e.role)} <span class="exp-arrow" aria-hidden="true">→</span> <span class="exp-company">${esc(e.company)}</span></span>
+            <span class="exp-icon" aria-hidden="true"></span>
+          </button>
+        </h3>
+        <div class="exp-panel" id="exp-panel-${i}" role="region" aria-labelledby="exp-btn-${i}">
+          <div class="exp-panel-inner">
+            <div class="exp-body">
+              ${meta.length ? `<p class="exp-meta"><strong>${meta[0]}</strong>${meta[1] ? ` · ${meta[1]}` : ""}</p>` : ""}
+              ${t(e.description) ? `<p>${esc(e.description)}</p>` : ""}
+              ${e.items && e.items.length ? `<ul class="exp-list">${e.items.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+            </div>
+          </div>
         </div>
-      </li>`
-    ).join("");
+      </li>`;
+    }).join("");
   }
 
   function renderGame(gameEl) {
@@ -249,6 +263,18 @@
     document.querySelectorAll(".gallery img").forEach((img) => {
       const mark = () => img.naturalWidth / img.naturalHeight > 1.9 && img.parentElement.classList.add("wide");
       img.complete ? mark() : img.addEventListener("load", mark, { once: true });
+    });
+  }
+
+  // Acordeão da experiência: clique abre/fecha cada cargo
+  const expList = $("#experience");
+  if (expList) {
+    expList.addEventListener("click", (ev) => {
+      const btn = ev.target.closest(".exp-trigger");
+      if (!btn) return;
+      const isOpen = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!isOpen));
+      btn.closest(".exp-item").classList.toggle("open", !isOpen);
     });
   }
 
