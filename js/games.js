@@ -286,144 +286,6 @@ const GAMES = [
     ],
   },
   {
-    id: "energy-anti-stress-loops",
-    title: "Energy: Anti-Stress Loops",
-    tagline: {
-      pt: "Puzzle relaxante de conectar linhas de energia.",
-      en: "A relaxing puzzle about connecting lines of energy.",
-    },
-    studio: "Infinity Games",
-    role: "Mid-Game Designer",
-    platform: "Android, iOS",
-    tools: "Miro, Asana, Spreadsheets, Game Analytics, Firebase, Typeform",
-    tags: ["Puzzle", { pt: "Relaxante", en: "Relaxing" }, "Mobile", "Free to Play"],
-    cover: "assets/covers/energy.webp",
-    hero: "assets/gallery/energy/1.webp",
-    color: "#1b1d3a",
-    video: "TsyCw8zXRrs",
-    links: [
-      googlePlay("https://play.google.com/store/apps/details?id=com.infinitygames.loopenergy"),
-      appStore("https://apps.apple.com/us/app/energy-anti-stress-loops/id1301967636"),
-    ],
-    sections: [
-      {
-        heading: H.overview,
-        body: {
-          pt: "Um puzzle calmante que ajuda a aliviar a ansiedade: resolva os quebra-cabeças conectando as linhas de energia, aumentando o foco e relaxando ao mesmo tempo.",
-          en: "A calming, anxiety-relieving puzzle game: solve the puzzles by connecting lines of energy, boosting your focus while relaxing at the same time.",
-        },
-      },
-      {
-        heading: H.role,
-        items: [
-          {
-            pt: "Level design: análise com dados do Game Analytics para encontrar os principais pontos de churn e proposta de reestruturação das fases iniciais.",
-            en: "Level design: used Game Analytics data to find the main churn issues and proposed a restructure of the early levels.",
-          },
-          {
-            pt: "Testes A/B do novo level design, além de testes de live ops, monetização e dificuldade, baseados em KPIs e hipóteses.",
-            en: "A/B tests for the new level design, plus live ops, monetization and difficulty tests based on KPIs and hypotheses.",
-          },
-          {
-            pt: "Pesquisa com usuários (idade, gênero, regiões, perfis e hábitos de compra) para criar estratégias de monetização por tiers.",
-            en: "User research (age, gender, regions, player profiles and spending habits) to build tier-based monetization strategies.",
-          },
-          {
-            pt: "Live ops: eventos para aumentar retenção e receita, com base em benchmarks como Royal Match.",
-            en: "Live ops: in-game events to raise retention and revenue, based on benchmarks such as Royal Match.",
-          },
-          {
-            pt: "Mapeamento de eventos de analytics para coletar KPIs mais detalhados.",
-            en: "Event analytics mapping to collect more detailed KPI data.",
-          },
-          { pt: "Documentação de todas as features e decisões.", en: "Documentation of every feature and decision." },
-        ],
-      },
-      {
-        heading: { pt: "Análise de churn por fase", en: "Level churn analysis" },
-        body: {
-          pt: "Usei os dados das fases nos principais países do jogo para identificar um padrão de churn e organizei tudo numa planilha. Ao analisar as semelhanças visuais entre as fases, encontramos um padrão a ser corrigido e rodamos um teste A/B com o novo level design — o churn nas fases mais problemáticas caiu.",
-          en: "I used level data from the game's main countries to find a churn pattern and organized it in a spreadsheet. By analyzing visual similarities between levels we found a pattern to fix and ran an A/B test with a new level design — churn dropped on the most problematic levels.",
-        },
-      },
-      {
-        heading: { pt: "Pesquisa com usuários", en: "User research" },
-        body: {
-          pt: "Com o Firebase identificamos faixa etária, gênero e regiões predominantes, e com uma pesquisa no Typeform (perguntas qualitativas e quantitativas) encontramos lacunas no jogo e oportunidades de novas features, monetização e engajamento.",
-          en: "Using Firebase we identified the main age range, gender and regions, and a Typeform survey (qualitative and quantitative questions) revealed gaps in the game and opportunities for new features, monetization and engagement.",
-        },
-      },
-    ],
-  },
-  {
-    id: "music-tower",
-    title: "Music Tower: Tap Tiles",
-    tagline: {
-      pt: "Jogo musical relaxante de guitarra e piano.",
-      en: "A relaxing guitar and piano music game.",
-    },
-    studio: "Infinity Games",
-    role: "Mid-Game Designer",
-    platform: "Android, iOS",
-    tools: "Unity, Figma, Miro, Asana, Spreadsheets, Game Analytics",
-    tags: [{ pt: "Música", en: "Music" }, "Casual", "Mobile", "Free to Play"],
-    cover: "assets/covers/music-tower.webp",
-    hero: "assets/gallery/music-tower/1.webp",
-    color: "#f3c6d6",
-    links: [
-      googlePlay("https://play.google.com/store/apps/details?id=com.twelvemoments.musicparty"),
-      appStore("https://apps.apple.com/us/app/music-tower-tap-tiles/id1510739277"),
-    ],
-    sections: [
-      {
-        heading: H.overview,
-        body: {
-          pt: "Um jogo simples e divertido para tocar músicas relaxantes na guitarra e no piano, enquanto você decora sua torre com itens fofos de diorama.",
-          en: "A simple, fun game for playing relaxing music on guitar and piano while you decorate your tower with cute diorama items.",
-        },
-      },
-      {
-        heading: H.role,
-        items: [
-          {
-            pt: "FTUE: análise passo a passo com KPIs para reduzir o churn inicial, com protótipo da nova versão no Figma.",
-            en: "FTUE: step-by-step KPI analysis to reduce early churn, with the new version prototyped in Figma.",
-          },
-          {
-            pt: "Level design: balanceamento de dificuldade a partir de métricas das músicas, criando um ritmo envolvente.",
-            en: "Level design: balanced difficulty from song metrics to create engaging pacing.",
-          },
-          {
-            pt: "Monetização: análise de todas as features e da receita gerada, com ajustes para entregar mais valor ao jogador.",
-            en: "Monetization: analyzed every feature's revenue performance and adjusted them to deliver more value to players.",
-          },
-          {
-            pt: "Pesquisa com usuários no Typeform para descobrir que músicas os jogadores queriam e como melhorar a monetização.",
-            en: "Typeform user research to learn which songs players wanted and how to improve monetization.",
-          },
-          {
-            pt: "Testes A/B que abriram novas oportunidades de receita e engajamento.",
-            en: "A/B tests that opened new revenue and engagement opportunities.",
-          },
-        ],
-      },
-      {
-        heading: { pt: "Estratégias de monetização", en: "Monetization strategies" },
-        body: {
-          pt: "Mapeei todos os pontos de monetização (IAP e rewarded ads) e quais posicionamentos de anúncio tinham mais engajamento. Com isso e com benchmarks, propus reestruturar algumas features para valorizar os rewarded ads e criar novos IAPs para aumentar o ticket médio diário.",
-          en: "I mapped every monetization point (IAP and rewarded ads) and which ad placements had the most engagement. With that and benchmark research, I proposed restructuring some features to strengthen rewarded ads and adding new IAPs to raise average daily revenue.",
-        },
-      },
-      {
-        heading: "FTUE",
-        body: {
-          pt: "Os KPIs mostravam churn durante o tutorial: algumas features não eram bem explicadas e o FTUE era longo demais. Reduzimos passos, deixamos o jogador jogar mais entre cada etapa e criamos uma “linha do tempo” que mostra a importância de cada feature.",
-          en: "KPIs showed churn during the FTUE: some features weren't clearly explained and it took too long. We cut steps, let players play more between each one, and created a “timeline” showing why each feature matters.",
-        },
-      },
-    ],
-  },
-  {
     id: "pet-shop-fever",
     title: "Pet Shop Fever: Hotel Animal",
     tagline: {
@@ -523,6 +385,144 @@ const GAMES = [
             en: "“Pick-and-play” FTUE, feature prototyping and documentation.",
           },
         ],
+      },
+    ],
+  },
+  {
+    id: "music-tower",
+    title: "Music Tower: Tap Tiles",
+    tagline: {
+      pt: "Jogo musical relaxante de guitarra e piano.",
+      en: "A relaxing guitar and piano music game.",
+    },
+    studio: "Infinity Games",
+    role: "Mid-Game Designer",
+    platform: "Android, iOS",
+    tools: "Unity, Figma, Miro, Asana, Spreadsheets, Game Analytics",
+    tags: [{ pt: "Música", en: "Music" }, "Casual", "Mobile", "Free to Play"],
+    cover: "assets/covers/music-tower.webp",
+    hero: "assets/gallery/music-tower/1.webp",
+    color: "#f3c6d6",
+    links: [
+      googlePlay("https://play.google.com/store/apps/details?id=com.twelvemoments.musicparty"),
+      appStore("https://apps.apple.com/us/app/music-tower-tap-tiles/id1510739277"),
+    ],
+    sections: [
+      {
+        heading: H.overview,
+        body: {
+          pt: "Um jogo simples e divertido para tocar músicas relaxantes na guitarra e no piano, enquanto você decora sua torre com itens fofos de diorama.",
+          en: "A simple, fun game for playing relaxing music on guitar and piano while you decorate your tower with cute diorama items.",
+        },
+      },
+      {
+        heading: H.role,
+        items: [
+          {
+            pt: "FTUE: análise passo a passo com KPIs para reduzir o churn inicial, com protótipo da nova versão no Figma.",
+            en: "FTUE: step-by-step KPI analysis to reduce early churn, with the new version prototyped in Figma.",
+          },
+          {
+            pt: "Level design: balanceamento de dificuldade a partir de métricas das músicas, criando um ritmo envolvente.",
+            en: "Level design: balanced difficulty from song metrics to create engaging pacing.",
+          },
+          {
+            pt: "Monetização: análise de todas as features e da receita gerada, com ajustes para entregar mais valor ao jogador.",
+            en: "Monetization: analyzed every feature's revenue performance and adjusted them to deliver more value to players.",
+          },
+          {
+            pt: "Pesquisa com usuários no Typeform para descobrir que músicas os jogadores queriam e como melhorar a monetização.",
+            en: "Typeform user research to learn which songs players wanted and how to improve monetization.",
+          },
+          {
+            pt: "Testes A/B que abriram novas oportunidades de receita e engajamento.",
+            en: "A/B tests that opened new revenue and engagement opportunities.",
+          },
+        ],
+      },
+      {
+        heading: { pt: "Estratégias de monetização", en: "Monetization strategies" },
+        body: {
+          pt: "Mapeei todos os pontos de monetização (IAP e rewarded ads) e quais posicionamentos de anúncio tinham mais engajamento. Com isso e com benchmarks, propus reestruturar algumas features para valorizar os rewarded ads e criar novos IAPs para aumentar o ticket médio diário.",
+          en: "I mapped every monetization point (IAP and rewarded ads) and which ad placements had the most engagement. With that and benchmark research, I proposed restructuring some features to strengthen rewarded ads and adding new IAPs to raise average daily revenue.",
+        },
+      },
+      {
+        heading: "FTUE",
+        body: {
+          pt: "Os KPIs mostravam churn durante o tutorial: algumas features não eram bem explicadas e o FTUE era longo demais. Reduzimos passos, deixamos o jogador jogar mais entre cada etapa e criamos uma “linha do tempo” que mostra a importância de cada feature.",
+          en: "KPIs showed churn during the FTUE: some features weren't clearly explained and it took too long. We cut steps, let players play more between each one, and created a “timeline” showing why each feature matters.",
+        },
+      },
+    ],
+  },
+  {
+    id: "energy-anti-stress-loops",
+    title: "Energy: Anti-Stress Loops",
+    tagline: {
+      pt: "Puzzle relaxante de conectar linhas de energia.",
+      en: "A relaxing puzzle about connecting lines of energy.",
+    },
+    studio: "Infinity Games",
+    role: "Mid-Game Designer",
+    platform: "Android, iOS",
+    tools: "Miro, Asana, Spreadsheets, Game Analytics, Firebase, Typeform",
+    tags: ["Puzzle", { pt: "Relaxante", en: "Relaxing" }, "Mobile", "Free to Play"],
+    cover: "assets/covers/energy.webp",
+    hero: "assets/gallery/energy/1.webp",
+    color: "#1b1d3a",
+    video: "TsyCw8zXRrs",
+    links: [
+      googlePlay("https://play.google.com/store/apps/details?id=com.infinitygames.loopenergy"),
+      appStore("https://apps.apple.com/us/app/energy-anti-stress-loops/id1301967636"),
+    ],
+    sections: [
+      {
+        heading: H.overview,
+        body: {
+          pt: "Um puzzle calmante que ajuda a aliviar a ansiedade: resolva os quebra-cabeças conectando as linhas de energia, aumentando o foco e relaxando ao mesmo tempo.",
+          en: "A calming, anxiety-relieving puzzle game: solve the puzzles by connecting lines of energy, boosting your focus while relaxing at the same time.",
+        },
+      },
+      {
+        heading: H.role,
+        items: [
+          {
+            pt: "Level design: análise com dados do Game Analytics para encontrar os principais pontos de churn e proposta de reestruturação das fases iniciais.",
+            en: "Level design: used Game Analytics data to find the main churn issues and proposed a restructure of the early levels.",
+          },
+          {
+            pt: "Testes A/B do novo level design, além de testes de live ops, monetização e dificuldade, baseados em KPIs e hipóteses.",
+            en: "A/B tests for the new level design, plus live ops, monetization and difficulty tests based on KPIs and hypotheses.",
+          },
+          {
+            pt: "Pesquisa com usuários (idade, gênero, regiões, perfis e hábitos de compra) para criar estratégias de monetização por tiers.",
+            en: "User research (age, gender, regions, player profiles and spending habits) to build tier-based monetization strategies.",
+          },
+          {
+            pt: "Live ops: eventos para aumentar retenção e receita, com base em benchmarks como Royal Match.",
+            en: "Live ops: in-game events to raise retention and revenue, based on benchmarks such as Royal Match.",
+          },
+          {
+            pt: "Mapeamento de eventos de analytics para coletar KPIs mais detalhados.",
+            en: "Event analytics mapping to collect more detailed KPI data.",
+          },
+          { pt: "Documentação de todas as features e decisões.", en: "Documentation of every feature and decision." },
+        ],
+      },
+      {
+        heading: { pt: "Análise de churn por fase", en: "Level churn analysis" },
+        body: {
+          pt: "Usei os dados das fases nos principais países do jogo para identificar um padrão de churn e organizei tudo numa planilha. Ao analisar as semelhanças visuais entre as fases, encontramos um padrão a ser corrigido e rodamos um teste A/B com o novo level design — o churn nas fases mais problemáticas caiu.",
+          en: "I used level data from the game's main countries to find a churn pattern and organized it in a spreadsheet. By analyzing visual similarities between levels we found a pattern to fix and ran an A/B test with a new level design — churn dropped on the most problematic levels.",
+        },
+      },
+      {
+        heading: { pt: "Pesquisa com usuários", en: "User research" },
+        body: {
+          pt: "Com o Firebase identificamos faixa etária, gênero e regiões predominantes, e com uma pesquisa no Typeform (perguntas qualitativas e quantitativas) encontramos lacunas no jogo e oportunidades de novas features, monetização e engajamento.",
+          en: "Using Firebase we identified the main age range, gender and regions, and a Typeform survey (qualitative and quantitative questions) revealed gaps in the game and opportunities for new features, monetization and engagement.",
+        },
       },
     ],
   },
