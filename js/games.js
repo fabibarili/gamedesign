@@ -102,28 +102,28 @@ const EXPERIENCE = [
     location: { pt: "Remoto · São Paulo, BR", en: "Remote · São Paulo, BR" },
     items: [
       {
-        pt: "Desenhei mecânicas centrais, progressão e a arquitetura do jogo por meio de um System Design completo.",
-        en: "Designed core mechanics, progression, and underlying game architecture through comprehensive System Design.",
+        pt: "Desenhei as mecânicas de core gameplay, os sistemas de progressão e a arquitetura de sistemas do jogo por meio de um systems design completo.",
+        en: "Designed core gameplay mechanics, progression systems and the overall game systems architecture through full systems design.",
       },
       {
-        pt: "Concebi e entreguei novas features da ideação à produção, alinhando a direção criativa aos objetivos de engajamento dos jogadores.",
-        en: "Conceptualized and delivered new features from ideation to production, aligning creative direction with player engagement goals.",
+        pt: "Fui owner e fiz o ship de novas features do conceito à produção, alinhando a visão do jogo aos objetivos de engajamento dos jogadores.",
+        en: "Owned and shipped new features from concept through production, aligning the game's vision with player engagement goals.",
       },
       {
-        pt: "Criei mockups interativos e fluxos de usuário com protótipos no Figma para refinar a UI/UX e alinhar times multidisciplinares.",
-        en: "Created interactive mockups and user flows via Prototyping with Figma to refine UI/UX and align multidisciplinary teams.",
+        pt: "Criei protótipos, mockups interativos e user flows no Figma para iterar na UI/UX e alinhar os times multidisciplinares.",
+        en: "Created prototypes, interactive mockups and user flows in Figma to iterate on UI/UX and build alignment across cross-functional teams.",
       },
       {
-        pt: "Estruturei sistemas de balanceamento, modelos matemáticos e ajuste de economia para garantir uma progressão sustentável.",
-        en: "Structured Game Balance systems, mathematical models, and economy tuning to ensure sustainable game progression.",
+        pt: "Defini o balanceamento, os modelos matemáticos e o tuning da economia do jogo para garantir sistemas de progressão sustentáveis.",
+        en: "Defined game balance, mathematical models and in-game economy tuning to ensure sustainable progression systems.",
       },
       {
-        pt: "Formulei e integrei estratégias de monetização orientadas a dados para aumentar a receita e maximizar o lifetime value (LTV).",
-        en: "Formulated and integrated data-driven Monetization Strategies to drive revenue and maximize lifetime value (LTV).",
+        pt: "Desenhei e integrei estratégias de monetização orientadas a dados para aumentar a receita e maximizar KPIs de monetização como o lifetime value (LTV).",
+        en: "Designed and integrated data-driven monetization strategies to grow revenue and maximize monetization KPIs such as lifetime value (LTV).",
       },
       {
-        pt: "Conduzi testes A/B e acompanhei métricas de performance para validar features, resolver gargalos de design e iterar com base no comportamento dos jogadores.",
-        en: "Conducted A/B Testing and monitored performance metrics to validate features, resolve design bottlenecks, and iterate based on live player behavior.",
+        pt: "Conduzi testes A/B e acompanhei métricas-chave e KPIs para validar hipóteses de design, resolver problemas de design e iterar com base no comportamento dos jogadores.",
+        en: "Ran A/B tests and tracked key metrics and KPIs to validate design hypotheses, solve design problems and iterate based on player behavior.",
       },
     ],
   },
@@ -134,28 +134,20 @@ const EXPERIENCE = [
     location: { pt: "Remoto · Porto Alegre, BR", en: "Remote · Porto Alegre, BR" },
     items: [
       {
-        pt: "Desenvolvimento de jogos com Unity 3D e Unreal",
-        en: "Game Development with Unity 3D and Unreal",
+        pt: "Desenvolvimento de jogos com Unity 3D e Unreal para clientes nacionais e internacionais.",
+        en: "Game development with Unity 3D and Unreal for national and international clients.",
       },
       {
-        pt: "Desenvolvimento XR",
-        en: "XR development",
+        pt: "Desenvolvimento XR para experiências de clientes.",
+        en: "XR development for client experiences.",
       },
       {
-        pt: "Experiência web 360° com React VR",
-        en: "360 web experience using React VR",
+        pt: "Experiência web 360° com React VR.",
+        en: "360° web experience built with React VR.",
       },
       {
-        pt: "Gamificação",
-        en: "Gamification",
-      },
-      {
-        pt: "Game Design",
-        en: "Game Design",
-      },
-      {
-        pt: "Level Design",
-        en: "Level Design",
+        pt: "Game Design e Level Design para projetos internos.",
+        en: "Game Design and Level Design for internal projects.",
       },
     ],
   },
@@ -165,23 +157,9 @@ const EXPERIENCE = [
     company: "Senac RS",
     location: "Porto Alegre, BR",
     description: {
-      pt: "Aulas no curso de Jogos Digitais sobre:",
-      en: "Classes in the Digital Games course about:",
+      pt: "Ministrei aulas no curso de Jogos Digitais do Senac, ensinando os conceitos e conhecimentos relacionados a Game Design, Programação em Unity e Gestão de Projetos.",
+      en: "Taught in Senac's Digital Games program, covering the concepts and skills of Game Design, Unity Programming and Project Management.",
     },
-    items: [
-      {
-        pt: "Game Design",
-        en: "Game Design",
-      },
-      {
-        pt: "Programação com Unity",
-        en: "Programming using Unity",
-      },
-      {
-        pt: "Gestão de projetos",
-        en: "Project management",
-      },
-    ],
   },
   {
     period: { pt: "Jan 2017 — Abr 2019", en: "Jan 2017 — Apr 2019" },
@@ -189,8 +167,8 @@ const EXPERIENCE = [
     company: { pt: "Freelancer", en: "Freelance" },
     location: "Porto Alegre, BR",
     description: {
-      pt: "Desenvolvimento de jogos e simulações em realidade virtual e aumentada, com foco em saúde.",
-      en: "Game development and virtual/augmented reality simulations focused on health.",
+      pt: "Atuei como Game Designer e Game Developer em projetos voltados à realidade virtual e aumentada, com temas relacionados à saúde.",
+      en: "Worked as a Game Designer and Game Developer on virtual and augmented reality projects with health-related themes.",
     },
   },
   {
@@ -198,8 +176,8 @@ const EXPERIENCE = [
     role: { pt: "Pesquisa acadêmica", en: "Researcher" },
     company: "Universidade Feevale",
     description: {
-      pt: "Pesquisa em jogos, saúde, realidade virtual e realidade aumentada.",
-      en: "Research on games, health, virtual reality and augmented reality.",
+      pt: "Desenvolvi pesquisa científica na área de jogos digitais, saúde, realidade virtual e aumentada. Publiquei artigos científicos em eventos nacionais e internacionais.",
+      en: "Conducted scientific research in digital games, health, and virtual and augmented reality, and published scientific papers at national and international conferences.",
     },
   },
 ];
@@ -245,7 +223,7 @@ const GAMES = [
     studio: "Burny Games & Infinity Games",
     role: "Mid-Game Designer",
     platform: "Android, iOS",
-    tools: "Unity, Miro, Asana, Google Sheets",
+    tools: "Unity, Miro, Asana, Google Sheets, Amplitude, Figma, Claude Code",
     tags: ["Puzzle", { pt: "Palavras", en: "Word" }, "Mobile", "Free to Play"],
     cover: "assets/covers/colorwood.webp",
     color: "#e9dcc7",
@@ -266,24 +244,24 @@ const GAMES = [
         heading: { pt: "Principais contribuições", en: "Key contributions" },
         items: [
           {
-            pt: "Conceito e estratégia de mercado: análise aprofundada de concorrentes para definir o core loop e os diferenciais do jogo.",
-            en: "Concept & market strategy: deep-dive competitor analysis to define the core loop and unique selling points.",
+            pt: "Conceito e estratégia de mercado: pesquisa de mercado e análise de concorrentes aprofundadas para definir o core loop, a visão do jogo e seus diferenciais.",
+            en: "Concept & Market Strategy: in-depth market research and competitive analysis to define the core loop, the game's vision and its unique selling points.",
           },
           {
-            pt: "Documentação e UX: GDD completo, fluxos de tela e wireframes priorizando uma jornada intuitiva.",
-            en: "System documentation & UX: authored the full GDD and designed end-to-end screen flows and wireframes for an intuitive player journey.",
+            pt: "Documentação e UX/UI: Game Design Document (GDD) completo, user flows e wireframes priorizando uma experiência intuitiva para o jogador.",
+            en: "Documentation & UX/UI: authored the full Game Design Document (GDD), user flows and wireframes, prioritizing an intuitive player experience.",
           },
           {
-            pt: "Ferramentas e pipeline: junto aos devs, desenhei uma ferramenta proprietária de criação de fases na Unity e filtros avançados em planilha, acelerando a prototipação e o balanceamento.",
-            en: "Tooling & pipeline: with the developers, designed a proprietary level creation tool in Unity plus advanced spreadsheet filters, making level prototyping and balancing much faster.",
+            pt: "Ferramentas e pipeline: em parceria com a engenharia, desenhei uma ferramenta proprietária de level design na Unity e filtros avançados em planilha, agilizando a prototipação e o balanceamento do jogo.",
+            en: "Tools & Pipeline: partnered with engineering to design a proprietary level design tool in Unity and advanced spreadsheet filters, streamlining prototyping and game balancing.",
           },
           {
-            pt: "Game feel: defini a estratégia de feedback háptico e as interações de UI para maximizar o “juice”.",
-            en: "Game feel & polish: defined the haptic feedback strategy and UI interactions to maximize satisfaction and “juice”.",
+            pt: "Game feel: defini a estratégia de feedback háptico e as interações de UI/UX para maximizar o “juice” e a experiência do jogador.",
+            en: "Game Feel: defined the haptic feedback strategy and UI/UX interactions to maximize “juice” and the overall player experience.",
           },
           {
-            pt: "Colaboração ágil com Arte, Engenharia e Produto, cumprindo marcos sem comprometer a qualidade.",
-            en: "Agile collaboration with Art, Engineering and Product, hitting milestones without compromising quality.",
+            pt: "Colaboração multidisciplinar: colaboração ágil com Arte, Engenharia e Produto, cumprindo os milestones com alta qualidade.",
+            en: "Cross-functional Collaboration: agile collaboration with Art, Engineering and Product, hitting milestones while maintaining high quality.",
           },
         ],
       },
