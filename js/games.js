@@ -62,32 +62,36 @@ const EXPERIENCE = [
     // Uma lista de itens vira tópicos (bullets); um texto único vira parágrafo
     items: [
       {
-        pt: "Criei e fui owner de novas features do conceito à implementação, com foco em retenção de jogadores e melhorias contínuas de UI/UX.",
-        en: "Designed and owned new features from concept to implementation, focusing on player retention and continuous UI/UX improvements.",
+        pt: "Fui owner de novas features do conceito à implementação, com foco em retenção de jogadores e iteração contínua de UI/UX.",
+        en: "Owned new features from concept through implementation, focused on player retention and continuous UI/UX iteration.",
       },
       {
-        pt: "Gerenciei o balanceamento e a modelagem de economia com fluxos avançados no Google Sheets para otimizar a progressão do jogo.",
-        en: "Managed Game Balance and economy modeling using advanced Google Sheets workflows to streamline game progression.",
+        pt: "Fui responsável pelo balanceamento, tuning e modelagem da economia do jogo, usando planilhas avançadas (Google Sheets) para otimizar os sistemas de progressão.",
+        en: "Owned game balancing, tuning and in-game economy modeling, using advanced spreadsheet models (Google Sheets) to optimize progression systems.",
       },
       {
-        pt: "Desenvolvi e executei estratégias de monetização e eventos de LiveOps para jogos live com milhares de jogadores simultâneos.",
-        en: "Developed and executed Monetization Strategies and LiveOps events for live titles scaled to thousands of concurrent players.",
+        pt: "Desenhei e executei estratégias de monetização e eventos de LiveOps para jogos live-service com milhares de jogadores simultâneos.",
+        en: "Designed and ran monetization strategies and LiveOps events for live-service games with thousands of concurrent players.",
       },
       {
-        pt: "Usei Game Analytics e KPIs para tomar decisões orientadas a dados, rodando testes A/B para validar features e otimizar a performance do produto.",
-        en: "Utilized Game Analytics and KPIs to drive data-informed decisions, running A/B Testing to validate features and optimize product performance.",
+        pt: "Conduzi decisões de design orientadas a dados com analytics (GameAnalytics) e KPIs, rodando testes A/B para validar hipóteses de design e otimizar a performance do produto.",
+        en: "Drove data-driven design decisions using analytics (GameAnalytics) and KPIs, running A/B tests to validate design hypotheses and optimize product performance.",
       },
       {
-        pt: "Fiz benchmarks de mercado para identificar tendências da indústria e trazer boas práticas dos concorrentes para o desenvolvimento.",
-        en: "Conducted market benchmarking to identify industry trends and integrate competitive best practices into development.",
+        pt: "Fiz pesquisa de mercado e benchmarking de concorrentes para acompanhar as tendências da indústria e trazer boas práticas para o game design.",
+        en: "Conducted market research and competitive benchmarking to track industry trends and bring best practices into game design.",
       },
       {
-        pt: "Criei ferramentas de produtividade para acelerar pipelines de desenvolvimento e otimizar fluxos de trabalho em diferentes áreas.",
-        en: "Built custom productivity tools to accelerate development pipelines and optimize workflows across different areas.",
+        pt: "Criei ferramentas internas para agilizar os pipelines de produção e de conteúdo e otimizar fluxos de trabalho entre as diferentes áreas.",
+        en: "Built internal tools to streamline production and content pipelines and optimize workflows across disciplines.",
       },
       {
-        pt: "Colaborei em times internacionais e multidisciplinares para resolver gargalos complexos de design e manter produtos live de alta performance.",
-        en: "Collaborated within international, multidisciplinary teams to solve complex design bottlenecks and sustain high-performing live products.",
+        pt: "Trabalhei com times internacionais e multidisciplinares para resolver problemas complexos de design e manter produtos live de alta performance.",
+        en: "Partnered with international, cross-functional teams to solve complex design problems and maintain high-performing live products.",
+      },
+      {
+        pt: "Apliquei um fluxo de trabalho AI-native para criar ferramentas de design que otimizam tarefas, analisam o comportamento e os dados dos jogadores e mantêm dashboards diários de KPIs para monitorar a saúde do jogo, preservando o julgamento criativo, a autoria do design e a tomada de decisão.",
+        en: "Applied an AI-native workflow to build design tools that optimize tasks, analyze player behavior and data, and maintain daily KPI dashboards to monitor game health, while keeping creative judgment, design ownership and decision-making.",
       },
     ],
   },
