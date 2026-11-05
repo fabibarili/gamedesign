@@ -13,12 +13,11 @@
       studio: "Estúdio",
       video: "Vídeo",
       hello: "Oi, eu sou",
-      seeGames: "Ver projetos ↓",
+      seeGames: "Projetos ↓",
       downloadCv: "Baixar CV ↓",
       games: "Projetos",
       projects: (n) => `${n} projeto${n === 1 ? "" : "s"}`,
-      contactTitle: "Vamos conversar?",
-      contactText: "Disponível para oportunidades, colaborações e game jams.",
+      contactTitle: "Qual experiência vamos criar?",
       photoOf: (n) => `Foto de ${n}`,
       back: "← Todos os projetos",
       year: "Ano",
@@ -45,12 +44,11 @@
       studio: "Studio",
       video: "Video",
       hello: "Hi, I'm",
-      seeGames: "See projects ↓",
+      seeGames: "Projects ↓",
       downloadCv: "Download CV ↓",
       games: "Projects",
       projects: (n) => `${n} project${n === 1 ? "" : "s"}`,
-      contactTitle: "Let's talk?",
-      contactText: "Open to opportunities, collaborations and game jams.",
+      contactTitle: "What experience will we create next?",
       photoOf: (n) => `Photo of ${n}`,
       back: "← All projects",
       year: "Year",
@@ -69,16 +67,16 @@
     },
   };
 
+  // O idioma escolhido vale só enquanto a pessoa navega nesta aba;
+  // toda nova visita abre em inglês (o padrão do site).
   const store = {
-    get() { try { return localStorage.getItem("lang"); } catch { return null; } },
-    set(v) { try { localStorage.setItem("lang", v); } catch {} },
+    get() { try { return sessionStorage.getItem("lang"); } catch { return null; } },
+    set(v) { try { sessionStorage.setItem("lang", v); } catch {} },
   };
+  try { localStorage.removeItem("lang"); } catch {}
 
-  let lang =
-    new URLSearchParams(location.search).get("lang") ||
-    store.get() ||
-    ((navigator.language || "").toLowerCase().startsWith("pt") ? "pt" : "en");
-  if (!UI[lang]) lang = "pt";
+  let lang = new URLSearchParams(location.search).get("lang") || store.get() || "en";
+  if (!UI[lang]) lang = "en";
 
   // Texto traduzível: string simples ou { pt, en }
   const t = (v) =>
@@ -129,6 +127,8 @@
     $("#photo").src = PROFILE.photo;
     $("#photo").alt = ui("photoOf")(PROFILE.name);
     $("#hero-links").innerHTML = PROFILE.links.map((l) => linkBtn(l)).join("");
+    const contactLinks = $("#contact-links");
+    if (contactLinks) contactLinks.innerHTML = PROFILE.links.map((l) => linkBtn(l)).join("");
 
     const cv = $("#cv");
     if (cv) {

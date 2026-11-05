@@ -212,9 +212,10 @@ a { color: inherit; }
 /* ---------- Contact / Footer ---------- */
 .contact { text-align: center; }
 .contact-title {
-  font-size: 2rem;
-  letter-spacing: -0.01em;
-  margin-bottom: 12px;
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
 }
 .contact p { color: var(--muted); margin-bottom: 28px; }
 .contact .hero-links { justify-content: center; }

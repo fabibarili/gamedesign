@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -16,14 +16,14 @@
       <a href="index.html" class="logo" data-name></a>
       <div class="header-right">
         <nav class="nav">
-          <a href="#sobre" data-i18n="navAbout">Sobre</a>
-          <a href="#experiencia" data-i18n="navExperience">Experiência</a>
-          <a href="#projetos" data-i18n="navGames">Projetos</a>
-          <a href="#contato" data-i18n="navContact">Contato</a>
+          <a href="#sobre" data-i18n="navAbout">About</a>
+          <a href="#experiencia" data-i18n="navExperience">Experience</a>
+          <a href="#projetos" data-i18n="navGames">Projects</a>
+          <a href="#contato" data-i18n="navContact">Contact</a>
         </nav>
         <div class="lang-switch" role="group" aria-label="Idioma / Language">
-          <button type="button" data-lang="pt" aria-pressed="true">PT</button>
-          <button type="button" data-lang="en" aria-pressed="false">EN</button>
+          <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
         </div>
       </div>
     </div>
@@ -37,12 +37,12 @@
         </div>
         <div class="reveal">
           <span class="eyebrow" data-role></span>
-          <h1><span data-i18n="hello">Oi, eu sou</span> <span data-name></span>.</h1>
+          <h1><span data-i18n="hello">Hi, I'm</span> <span data-name></span>.</h1>
           <div id="bio"></div>
           <div class="hero-links">
-            <a href="#projetos" class="btn primary" data-i18n="seeGames">Ver projetos ↓</a>
-            <a id="cv" class="btn" download="Fabi-Barili-CV.pdf" data-i18n="downloadCv">Baixar CV ↓</a>
+            <a href="#projetos" class="btn primary" data-i18n="seeGames">Projects ↓</a>
             <span id="hero-links" style="display:contents"></span>
+            <a id="cv" class="btn" download="Fabi-Barili-CV.pdf" data-i18n="downloadCv">Download CV ↓</a>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@
     <section class="section" id="experiencia">
       <div class="container">
         <div class="section-head">
-          <h2 data-i18n="experience">Experiência</h2>
+          <h2 data-i18n="experience">Experience</h2>
         </div>
         <ol class="exp-accordion" id="experience"></ol>
       </div>
@@ -60,7 +60,7 @@
     <section class="section" id="projetos">
       <div class="container">
         <div class="section-head">
-          <h2 data-i18n="games">Projetos</h2>
+          <h2 data-i18n="games">Projects</h2>
           <span id="games-count"></span>
         </div>
         <div class="games" id="games"></div>
@@ -69,10 +69,10 @@
 
     <section class="section contact" id="contato">
       <div class="container">
-        <h2 class="contact-title" data-i18n="contactTitle">Vamos conversar?</h2>
-        <p data-i18n="contactText">Disponível para oportunidades, colaborações e game jams.</p>
+        <h2 class="contact-title" data-i18n="contactTitle">What experience will we create next?</h2>
         <div class="hero-links">
           <a id="email" class="btn primary"></a>
+          <span id="contact-links" style="display:contents"></span>
         </div>
       </div>
     </section>
