@@ -19,16 +19,16 @@ const PROFILE = {
   photo: "assets/foto.jpg",
   bio: [
     {
-      pt: "Game Designer no Brasil com mais de 5 anos de experiência na indústria de jogos mobile. Atuo em todo o ciclo de desenvolvimento — do conceito e design de sistemas ao lançamento global e à gestão de live ops.",
-      en: "Game Designer based in Brazil with over 5 years of experience in the mobile gaming industry. My work covers the full lifecycle of game development, from initial concept and systems design to global launch and live operations.",
+      pt: "Game Designer com +5 anos de experiência, baseada no Brasil. Atuo em todo o ciclo de desenvolvimento, do conceito, design de sistemas, lançamento e a gestão do Live Ops.",
+      en: "Game Designer with 5+ years of experience, based in Brazil. I work across the full development cycle, from concept and systems design to launch and Live Ops management.",
     },
     {
-      pt: "Desenho sistemas e resolvo problemas centrais de design para impulsionar retenção, engajamento e receita, conectando a visão criativa aos objetivos de negócio.",
-      en: "I design systems and solve core design problems to drive player retention, engagement and revenue, bridging the gap between creative vision and business goals.",
+      pt: "Trabalho na identificação de problemas e busco a solução deles através de conceitos de game design, pesquisa de mercado e métricas do jogo, sempre buscando entregar a melhor experiência para os jogadores conectada aos objetivos do negócio. Experiência em trabalho remoto com equipes multiculturais.",
+      en: "I identify problems and solve them through game design principles, market research and game metrics, always aiming to deliver the best possible player experience while staying connected to business goals. Experienced in working remotely with multicultural teams.",
     },
     {
-      pt: "Tenho graduação em Jogos Digitais, mestrado em Indústria Criativa e em Administração de Sistemas Computacionais, e MBA em Game Design.",
-      en: "I hold a bachelor's degree in Digital Games, master's degrees in Creative Industry and in Computer Systems Administration, and an MBA in Game Design.",
+      pt: "Graduada em Jogos Digitais, Mestre em Indústria Criativa e com MBA em Game Design. Atualmente estudando novas formas de fazer jogos com o uso da Inteligência Artificial, sempre mantendo a autonomia nas decisões e a criatividade como aliada às novas tecnologias.",
+      en: "I hold a degree in Digital Games, a Master's in Creative Industry and an MBA in Game Design. I'm currently exploring new ways of making games with Artificial Intelligence, while keeping ownership of decisions and treating creativity as an ally to new technologies.",
     },
   ],
   email: "fabibarili@gmail.com",
