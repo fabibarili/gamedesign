@@ -1,10 +1,15 @@
 :root {
-  --bg: #fafaf7;
+  /* Paleta: colorhunt.co/palette/1b365d005a9c60c1e5a0e0ef
+     #1B365D títulos/texto · #005A9C destaque · #60C1E5 detalhes · #A0E0EF tons claros */
+  --bg: #f2f9fb;
   --surface: #ffffff;
-  --text: #1c1c1e;
-  --muted: #6b6b70;
-  --line: #e6e4de;
-  --accent: #1e3a8a;
+  --text: #1b365d;
+  --muted: #4a6283;
+  --line: #c6e6ef;
+  --heading: #1b365d;
+  --accent: #005a9c;       /* botão principal, play, foco, textos de destaque */
+  --accent-soft: #60c1e5;  /* marcadores e setas */
+  --on-accent: #ffffff;
   --radius: 14px;
   --max: 1080px;
   --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -12,12 +17,15 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #141416;
-    --surface: #1d1d20;
-    --text: #f2f2f0;
-    --muted: #a0a0a6;
-    --line: #2c2c31;
-    --accent: #8fb0ff;
+    --bg: #0f2240;
+    --surface: #1b365d;
+    --text: #eaf7fb;
+    --muted: #a3c3d6;
+    --line: #2a4a75;
+    --heading: #a0e0ef;
+    --accent: #60c1e5;
+    --accent-soft: #60c1e5;
+    --on-accent: #0f2240;
   }
 }
 
@@ -120,9 +128,9 @@ a { color: inherit; }
 }
 .btn:hover { transform: translateY(-2px); border-color: var(--text); }
 .btn.primary {
-  background: var(--text);
-  color: var(--bg);
-  border-color: var(--text);
+  background: var(--accent);
+  color: var(--on-accent);
+  border-color: var(--accent);
 }
 
 .photo {
@@ -421,7 +429,7 @@ a { color: inherit; }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-soft);
 }
 .game-section p + ul { margin-top: 14px; }
 
@@ -488,7 +496,7 @@ a { color: inherit; }
   color: var(--text);
 }
 .exp-trigger:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 4px; }
-.exp-arrow { color: var(--accent); margin: 0 2px; }
+.exp-arrow { color: var(--accent-soft); margin: 0 2px; }
 .exp-company { transition: color 0.2s; }
 .exp-trigger:hover .exp-company { text-decoration: underline; text-underline-offset: 4px; }
 
@@ -540,7 +548,7 @@ a { color: inherit; }
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--accent);
+  background: var(--accent-soft);
 }
 .exp-body p + .exp-list { margin-top: 12px; }
 @media (max-width: 520px) {
@@ -548,11 +556,11 @@ a { color: inherit; }
   .exp-body { padding-right: 0; }
 }
 
-/* ---------- Títulos em azul escuro ---------- */
+/* ---------- Títulos ---------- */
 .hero h1,
 .section-head h2,
 .contact-title,
 .card h3,
 .game-title,
 .game-section h2,
-.exp-trigger { color: var(--accent); }
+.exp-trigger { color: var(--heading); }
