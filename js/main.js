@@ -112,6 +112,7 @@
   function renderShared() {
     document.documentElement.lang = ui("htmlLang");
     document.querySelectorAll("[data-name]").forEach((el) => (el.textContent = PROFILE.name));
+    document.querySelectorAll("[data-short-name]").forEach((el) => (el.textContent = PROFILE.shortName || PROFILE.name));
     document.querySelectorAll("[data-role]").forEach((el) => (el.textContent = t(PROFILE.role)));
     document.querySelectorAll("[data-i18n]").forEach((el) => (el.textContent = ui(el.dataset.i18n)));
     document.querySelectorAll("[data-lang]").forEach((b) =>

@@ -69,7 +69,7 @@ a { color: inherit; }
 }
 .logo {
   font-weight: 700;
-  font-size: 1.43rem;
+  font-size: 1.86rem;
   text-decoration: none;
 }
 .nav { display: flex; gap: 28px; }
@@ -93,7 +93,7 @@ a { color: inherit; }
 }
 .eyebrow {
   display: inline-block;
-  font-size: 0.8rem;
+  font-size: 1.248rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -101,7 +101,7 @@ a { color: inherit; }
   margin-bottom: 16px;
 }
 .hero h1 {
-  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-size: clamp(1.92rem, 4vw, 3.04rem);
   line-height: 1.05;
   letter-spacing: -0.02em;
   margin-bottom: 24px;
@@ -373,8 +373,50 @@ a { color: inherit; }
   .hero .container { grid-template-columns: 1fr; gap: 40px; }
   .photo { max-width: 360px; order: -1; }
   .games { grid-template-columns: 1fr; }
-  .game-layout { grid-template-columns: 1fr; gap: 40px; }
-  .facts { position: static; }
+  /* No mobile, o card de informações sobe para logo depois do título,
+     antes de "About the game", e os itens ficam lado a lado */
+  .game-layout { grid-template-columns: 1fr; gap: 0; }
+  .game-layout > article { display: contents; }
+  .game-title, .game-tagline { order: 0; }
+  .game-tagline { margin-bottom: 28px; }
+  .game-layout > article > :not(.game-title):not(.game-tagline) { order: 2; }
+  .facts {
+    order: 1;
+    position: static;
+    margin-bottom: 40px;
+    padding: 18px;
+  }
+  /* Uma faixa horizontal: cada informação numa coluna, com divisórias finas */
+  .facts dl {
+    grid-auto-flow: column;
+    grid-auto-columns: auto;
+    gap: 0;
+  }
+  .facts dl > div {
+    min-width: 0;
+    padding: 0 12px;
+    border-left: 1px solid var(--line);
+  }
+  .facts dl > div:first-child { padding-left: 0; border-left: 0; }
+  .facts dl > div:last-child { padding-right: 0; }
+  .facts dt { font-size: 0.68rem; margin-bottom: 4px; }
+  .facts dd { font-size: 0.9rem; line-height: 1.4; overflow-wrap: break-word; }
+  /* Com 4 ou mais itens, vira uma grade 2 × 2 */
+  .facts dl:has(> div:nth-child(4)) {
+    grid-auto-flow: row;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 16px;
+  }
+  .facts dl:has(> div:nth-child(4)) > div:nth-child(odd) { padding-left: 0; border-left: 0; }
+  .facts dl:has(> div:nth-child(4)) > div:nth-child(even) { padding-right: 0; }
+  .store-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
   .game-hero { aspect-ratio: 16 / 9; }
 }
 @media (max-width: 520px) {

@@ -14,6 +14,7 @@
 
 const PROFILE = {
   name: "Fabi Barili",
+  shortName: "Fabi", // usado na saudação da bio ("Hi, I'm Fabi.")
   role: "Game Designer",
   photo: "assets/foto.jpg",
   bio: [
