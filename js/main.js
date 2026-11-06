@@ -236,8 +236,8 @@
 
     gameEl.innerHTML = `
       <a class="back" href="index.html#projetos">${ui("back")}</a>
-      <div class="game-hero reveal${g.hero ? "" : " contain"}" style="background:${esc(g.color)}">
-        ${g.hero || g.cover ? `<img src="${esc(g.hero || g.cover)}" alt="${esc(g.title)}" />` : ""}
+      <div class="game-hero reveal" style="background:${esc(g.color)}">
+        ${g.hero || g.cover ? `<img src="${esc(g.hero || g.cover)}" alt="${esc(g.title)}"${g.heroPosition ? ` style="object-position:${esc(g.heroPosition)}"` : ""} />` : ""}
       </div>
       <div class="game-layout">
         <article>

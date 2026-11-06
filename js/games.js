@@ -197,7 +197,11 @@ const EXPERIENCE = [
  *  tools       ferramentas usadas (viram tags depois das Responsabilidades)
  *  tags        características do jogo (gênero, modelo, plataforma) — aparecem só no card
  *  cover       imagem de capa do card (assets/...)
- *  hero        imagem larga do topo da página do jogo (opcional; usa a capa se faltar)
+ *  hero        imagem do banner no topo da página do jogo (opcional; usa a capa se faltar).
+ *              Todos os banners têm o mesmo formato largo (1272 × 448) e a imagem
+ *              preenche o quadro; partes que não cabem são cortadas.
+ *  heroPosition  qual parte da imagem fica visível no banner (opcional;
+ *              padrão "center"; ex: "center 40%" mostra um pouco mais do topo)
  *  color       cor de fundo (aparece enquanto a imagem carrega)
  *  video       ID de um vídeo do YouTube (opcional)
  *  links       botões: googlePlay(url) / appStore(url) viram o selo da loja;
@@ -226,6 +230,7 @@ const GAMES = [
     tools: "Unity, Miro, Asana, Google Sheets, Amplitude, Figma, Claude Code",
     tags: ["Puzzle", { pt: "Palavras", en: "Word" }, "Mobile", "Free to Play"],
     cover: "assets/covers/colorwood.webp",
+    hero: "assets/gallery/colorwood/banner.webp",
     color: "#e9dcc7",
     video: "ZLbdQBRAxnI",
     links: [
@@ -281,6 +286,7 @@ const GAMES = [
     tags: [{ pt: "Gerenciamento de tempo", en: "Time management" }, "Casual", "Mobile", "Free to Play"],
     cover: "assets/covers/pet-shop-fever.webp",
     hero: "assets/gallery/pet-shop-fever/1.webp",
+    heroPosition: "center 55%",
     color: "#bfe3f2",
     links: [
       googlePlay("https://play.google.com/store/apps/details?id=com.tapps.virtual.pet.hotel.games.world"),
@@ -564,6 +570,8 @@ const GAMES = [
     tools: "Asana, Miro, Spreadsheets",
     tags: ["Idle", "Tower Defense", "Mobile", "Free to Play"],
     cover: "assets/covers/neat-nexus.webp",
+    hero: "assets/gallery/neat-nexus/1.webp",
+    heroPosition: "center 40%",
     color: "#10141f",
     video: "vBNBuzEfT-U",
     links: [
@@ -630,6 +638,7 @@ const GAMES = [
     tags: ["RPG", { pt: "Geolocalização", en: "Location-based" }, "Mobile"],
     cover: "assets/covers/gaiah.webp",
     hero: "assets/gallery/gaiah/1.webp",
+    heroPosition: "center 40%",
     color: "#1d2b22",
     links: [],
     sections: [
@@ -662,6 +671,7 @@ const GAMES = [
     tools: "Unity",
     tags: [{ pt: "Aventura", en: "Adventure" }, "Casual", "Mobile", "Free to Play"],
     cover: "assets/covers/city-crush.webp",
+    hero: "assets/gallery/city-crush/1.webp",
     color: "#3a2a4d",
     links: [],
     sections: [
@@ -700,6 +710,7 @@ const GAMES = [
     tools: "Miro, Asana, Spreadsheets, Game Analytics",
     tags: [{ pt: "Tabuleiro", en: "Board game" }, "Multiplayer", "HTML5"],
     cover: "assets/covers/chess.webp",
+    hero: "assets/gallery/chess/1.webp",
     color: "#22252e",
     links: [],
     sections: [
@@ -767,6 +778,7 @@ const GAMES = [
     tools: "Miro, Asana, Spreadsheets, Game Analytics",
     tags: ["Casual", "Multiplayer", "HTML5"],
     cover: "assets/covers/tic-tac-toe.webp",
+    hero: "assets/gallery/tic-tac-toe/1.webp",
     color: "#171c45",
     links: [],
     sections: [

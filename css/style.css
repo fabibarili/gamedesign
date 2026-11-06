@@ -240,16 +240,16 @@ a { color: inherit; }
 }
 .back:hover { color: var(--text); }
 
+/* Banner padrão de todos os projetos: formato largo (1272 × 448).
+   A imagem preenche o quadro; use heroPosition no games.js para escolher o recorte. */
 .game-hero {
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 16 / 9;
-  max-height: 560px;
+  aspect-ratio: 1272 / 448;
   width: 100%;
   margin-bottom: 48px;
 }
 .game-hero img { width: 100%; height: 100%; object-fit: cover; }
-.game-hero.contain img { object-fit: contain; }
 
 .game-layout {
   display: grid;
@@ -417,7 +417,6 @@ a { color: inherit; }
     padding-top: 20px;
     border-top: 1px solid var(--line);
   }
-  .game-hero { aspect-ratio: 16 / 9; }
 }
 @media (max-width: 520px) {
   .container { padding: 0 16px; }
