@@ -250,23 +250,23 @@ const GAMES = [
         items: [
           {
             pt: "Conceito e estratégia de mercado: pesquisa de mercado e análise de concorrentes aprofundadas para definir o core loop, a visão do jogo e seus diferenciais.",
-            en: "Concept & Market Strategy: in-depth market research and competitive analysis to define the core loop, the game's vision and its unique selling points.",
+            en: "Concept & Market Strategy: Led in-depth market research and competitive analysis to define the core loop, game vision and unique selling points (USPs).",
           },
           {
             pt: "Documentação e UX/UI: Game Design Document (GDD) completo, user flows e wireframes priorizando uma experiência intuitiva para o jogador.",
-            en: "Documentation & UX/UI: authored the full Game Design Document (GDD), user flows and wireframes, prioritizing an intuitive player experience.",
+            en: "Documentation & UX/UI: Authored the full Game Design Document (GDD), user flows and wireframes, prioritizing an intuitive player experience.",
           },
           {
             pt: "Ferramentas e pipeline: em parceria com a engenharia, desenhei uma ferramenta proprietária de level design na Unity e filtros avançados em planilha, agilizando a prototipação e o balanceamento do jogo.",
-            en: "Tools & Pipeline: partnered with engineering to design a proprietary level design tool in Unity and advanced spreadsheet filters, streamlining prototyping and game balancing.",
+            en: "Tools & Pipeline: Partnered with engineering to design a proprietary Unity level design tool and advanced spreadsheet filters, streamlining prototyping and game balancing.",
           },
           {
             pt: "Game feel: defini a estratégia de feedback háptico e as interações de UI/UX para maximizar o “juice” e a experiência do jogador.",
-            en: "Game Feel: defined the haptic feedback strategy and UI/UX interactions to maximize “juice” and the overall player experience.",
+            en: "Game Feel: Defined the haptic feedback strategy and UI/UX interactions to maximize “juice” and player satisfaction.",
           },
           {
             pt: "Colaboração multidisciplinar: colaboração ágil com Arte, Engenharia e Produto, cumprindo os milestones com alta qualidade.",
-            en: "Cross-functional Collaboration: agile collaboration with Art, Engineering and Product, hitting milestones while maintaining high quality.",
+            en: "Cross-functional Collaboration: Worked in agile cycles with Art, Engineering and Product, hitting milestones while maintaining high quality.",
           },
         ],
       },
@@ -304,19 +304,19 @@ const GAMES = [
         items: [
           {
             pt: "Revisão do core gameplay nos gêneros time management e dash, com benchmark de jogos do gênero.",
-            en: "Reviewed the core mechanics in the time management and dash genres, benchmarking leading games.",
+            en: "Competitive Analysis: Benchmarked top time management and dash games to review and refine the core mechanics.",
           },
           {
             pt: "Definição de bundles e IAPs e do momento certo de apresentar cada oferta na progressão.",
-            en: "Defined bundles and IAPs and when to present each offer during progression.",
+            en: "Monetization: Designed bundles and IAP offers, defining when each offer appears along the progression curve.",
           },
           {
             pt: "Refinamento do FTUE com foco em “pick-and-play”, guiado por métricas de produto.",
-            en: "Refined the FTUE around “pick-and-play”, guided by product metrics.",
+            en: "FTUE: Redesigned onboarding around a “pick-and-play” approach, iterating based on product metrics.",
           },
           {
             pt: "Planejamento de roadmap com o time de produto, prototipação de features e documentação.",
-            en: "Roadmap planning with the product team, feature prototyping and documentation.",
+            en: "Roadmap & Prototyping: Planned the feature roadmap with Product, and owned feature prototyping and design documentation.",
           },
         ],
       },
@@ -354,23 +354,23 @@ const GAMES = [
         items: [
           {
             pt: "Novas features a partir de benchmark de jogos líderes de mercado e insights de jogadores.",
-            en: "New features driven by benchmarks of market-leading games and player insights.",
+            en: "Feature Design: Designed new features informed by competitive benchmarking and player insights.",
           },
           {
             pt: "Balanceamento entre novas features e a economia do jogo.",
-            en: "Balancing new features against the game's economy.",
+            en: "Economy Balancing: Balanced new features against the in-game economy to keep progression sustainable.",
           },
           {
             pt: "Bundles e IAPs com timing estratégico de ofertas.",
-            en: "Bundles and IAPs with strategically timed offers.",
+            en: "Monetization: Designed bundles and IAP offers with strategically timed placements.",
           },
           {
             pt: "Testes A/B identificados a partir de métricas e análise dos resultados.",
-            en: "A/B tests identified from metrics, with full analysis of the results.",
+            en: "A/B Testing: Identified test opportunities from metrics and ran full post-test analysis.",
           },
           {
             pt: "FTUE “pick-and-play”, prototipação de features e documentação.",
-            en: "“Pick-and-play” FTUE, feature prototyping and documentation.",
+            en: "FTUE & Prototyping: Designed a “pick-and-play” FTUE, and owned feature prototyping and documentation.",
           },
         ],
       },
@@ -408,23 +408,23 @@ const GAMES = [
         items: [
           {
             pt: "FTUE: análise passo a passo com KPIs para reduzir o churn inicial, com protótipo da nova versão no Figma.",
-            en: "FTUE: step-by-step KPI analysis to reduce early churn, with the new version prototyped in Figma.",
+            en: "FTUE: Ran a step-by-step funnel analysis of onboarding KPIs to reduce early churn, and prototyped the redesigned flow in Figma.",
           },
           {
             pt: "Level design: balanceamento de dificuldade a partir de métricas das músicas, criando um ritmo envolvente.",
-            en: "Level design: balanced difficulty from song metrics to create engaging pacing.",
+            en: "Level Design: Tuned the difficulty curve using song-level metrics to create engaging pacing.",
           },
           {
             pt: "Monetização: análise de todas as features e da receita gerada, com ajustes para entregar mais valor ao jogador.",
-            en: "Monetization: analyzed every feature's revenue performance and adjusted them to deliver more value to players.",
+            en: "Monetization: Audited each feature's revenue performance and reworked them to deliver more value to players.",
           },
           {
             pt: "Pesquisa com usuários no Typeform para descobrir que músicas os jogadores queriam e como melhorar a monetização.",
-            en: "Typeform user research to learn which songs players wanted and how to improve monetization.",
+            en: "Player Research: Ran Typeform surveys to learn which songs players wanted and where monetization could improve.",
           },
           {
             pt: "Testes A/B que abriram novas oportunidades de receita e engajamento.",
-            en: "A/B tests that opened new revenue and engagement opportunities.",
+            en: "A/B Testing: Ran tests that unlocked new revenue and engagement opportunities.",
           },
         ],
       },
@@ -477,25 +477,25 @@ const GAMES = [
         items: [
           {
             pt: "Level design: análise com dados do Game Analytics para encontrar os principais pontos de churn e proposta de reestruturação das fases iniciais.",
-            en: "Level design: used Game Analytics data to find the main churn issues and proposed a restructure of the early levels.",
+            en: "Level Design: Used GameAnalytics data to pinpoint the main churn points, and restructured the early-game levels.",
           },
           {
             pt: "Testes A/B do novo level design, além de testes de live ops, monetização e dificuldade, baseados em KPIs e hipóteses.",
-            en: "A/B tests for the new level design, plus live ops, monetization and difficulty tests based on KPIs and hypotheses.",
+            en: "A/B Testing: Tested the new level design, plus LiveOps, monetization and difficulty changes, based on KPIs and design hypotheses.",
           },
           {
             pt: "Pesquisa com usuários (idade, gênero, regiões, perfis e hábitos de compra) para criar estratégias de monetização por tiers.",
-            en: "User research (age, gender, regions, player profiles and spending habits) to build tier-based monetization strategies.",
+            en: "Player Research: Segmented players by age, gender, region, profile and spending habits to build tier-based monetization strategies.",
           },
           {
             pt: "Live ops: eventos para aumentar retenção e receita, com base em benchmarks como Royal Match.",
-            en: "Live ops: in-game events to raise retention and revenue, based on benchmarks such as Royal Match.",
+            en: "LiveOps: Designed in-game events to boost retention and revenue, benchmarked against top titles such as Royal Match.",
           },
           {
             pt: "Mapeamento de eventos de analytics para coletar KPIs mais detalhados.",
-            en: "Event analytics mapping to collect more detailed KPI data.",
+            en: "Analytics: Mapped analytics events to capture more granular KPI data.",
           },
-          { pt: "Documentação de todas as features e decisões.", en: "Documentation of every feature and decision." },
+          { pt: "Documentação de todas as features e decisões.", en: "Documentation: Documented every feature and design decision." },
         ],
       },
       {
@@ -546,13 +546,13 @@ const GAMES = [
         items: [
           {
             pt: "Roteiro: escrita de um roteiro diverso, cobrindo vários temas, voltado para crianças.",
-            en: "Screenwriting: wrote a diverse script covering several subjects, tailored for children.",
+            en: "Narrative Design: Wrote a diverse, child-friendly script covering multiple educational subjects.",
           },
           {
             pt: "Experiência de gameplay: alinhar os objetivos de cada tema do roteiro com o gameplay.",
-            en: "Gameplay experience: aligned the goals of each script subject with the gameplay.",
+            en: "Gameplay Experience: Aligned each subject's learning goals with the gameplay.",
           },
-          { pt: "Documentação detalhada em todas as etapas.", en: "Detailed documentation at every stage." },
+          { pt: "Documentação detalhada em todas as etapas.", en: "Documentation: Produced detailed design documentation at every stage of development." },
         ],
       },
     ],
@@ -595,23 +595,23 @@ const GAMES = [
         items: [
           {
             pt: "Organização dos core loops, monetização, balanceamento e desbloqueio de torres; estrutura de como o jogador ganha e gasta recursos.",
-            en: "Organized core loops, monetization, tower balancing and unlocks; structured how players earn and spend resources.",
+            en: "Systems Design: Structured the core loop, monetization, tower unlocks and resource economy (how players earn and spend).",
           },
           {
             pt: "Definição de vida e poder das torres e do ritmo das fases.",
-            en: "Defined tower health and power values and level pacing.",
+            en: "Balancing: Defined tower health and power values, and the pacing of each level.",
           },
           {
             pt: "Simulador de fases (inimigos vs. torres) para saber quantas e quais torres o jogador precisa para vencer.",
-            en: "Built a level simulator (enemies vs. towers) to know how many and which towers players need to win.",
+            en: "Level Simulator: Built an enemies-vs-towers simulator to determine how many towers, and which ones, players need to win each level.",
           },
           {
             pt: "Balanceamento de inimigos (ataque, vida e presença nas fases) e de power-ups.",
-            en: "Balanced enemies (attack, health and presence in levels) and power-ups.",
+            en: "Enemy & Power-up Tuning: Balanced enemy stats (attack, health and spawn presence) and power-ups.",
           },
           {
             pt: "Análise de problemas de UI/UX junto ao time de arte e documentação para devs.",
-            en: "Analyzed UI/UX issues with the art team and kept developer documentation up to date.",
+            en: "UX & Documentation: Identified UI/UX issues with the art team, and kept developer documentation up to date.",
           },
         ],
       },
@@ -687,11 +687,11 @@ const GAMES = [
         items: [
           {
             pt: "Level design: criação de novas fases com objetivos variados direto na Unity.",
-            en: "Level design: built new levels with varied objectives directly in Unity.",
+            en: "Level Design: Built new levels with varied objectives directly in Unity.",
           },
           {
             pt: "Balanceamento de personagens e inimigos para uma experiência desafiadora e divertida.",
-            en: "Balanced characters and enemies for a challenging yet enjoyable experience.",
+            en: "Balancing: Tuned character and enemy stats for a challenging yet enjoyable experience.",
           },
         ],
       },
@@ -726,27 +726,27 @@ const GAMES = [
         items: [
           {
             pt: "Conceito do jogo e definição de features para se destacar dos concorrentes.",
-            en: "Game concept and feature set to stand out from competing chess games.",
+            en: "Game Concept: Defined the concept and feature set to differentiate it from competing chess games.",
           },
           {
             pt: "Mockups, UI e UX como referência para o time de arte.",
-            en: "Mockups, UI and UX as reference for the art team.",
+            en: "UI/UX: Created mockups and UI/UX flows as reference for the art team.",
           },
           {
             pt: "Customização, conquistas (para iniciantes, intermediários e avançados) e leaderboards, com balanceamento de recompensas.",
-            en: "Customization, achievements (for beginner, intermediate and advanced players) and leaderboards, with balanced rewards.",
+            en: "Meta Systems: Designed customization, achievements (for beginner, intermediate and advanced players) and leaderboards, with balanced rewards.",
           },
           {
             pt: "Sistemas de multiplayer e replay, e uma feature para incentivar o multiplayer.",
-            en: "Multiplayer and replay systems, plus a feature to drive multiplayer engagement.",
+            en: "Multiplayer: Designed multiplayer and replay systems, plus a feature to drive multiplayer engagement.",
           },
           {
             pt: "Power-ups para ajudar iniciantes e criar oportunidades de monetização.",
-            en: "Power-ups to help beginners and create monetization opportunities.",
+            en: "Power-ups: Designed power-ups that support beginners and create monetization opportunities.",
           },
           {
             pt: "FTUE, eventos de analytics no Game Analytics e documentação de todas as telas e features.",
-            en: "FTUE, Game Analytics events and documentation for every screen and feature.",
+            en: "FTUE & Analytics: Owned the FTUE, GameAnalytics event mapping and documentation for every screen and feature.",
           },
         ],
       },
@@ -755,11 +755,11 @@ const GAMES = [
         items: [
           {
             pt: "Match Challenge: oponentes desafiam o jogador para partidas difíceis com recompensas especiais.",
-            en: "Match Challenge: opponents challenge players to tough matches with special rewards.",
+            en: "Match Challenge: Opponents challenge players to tough matches with special rewards.",
           },
           {
             pt: "Game Challenge: inspirado na literatura clássica de xadrez, com posições que exigem soluções estratégicas para vencer.",
-            en: "Game Challenge: inspired by classic chess literature, with set positions that require strategic solutions to win.",
+            en: "Game Challenge: Puzzles inspired by classic chess literature, with set positions that require strategic solutions to win.",
           },
         ],
       },
@@ -794,23 +794,23 @@ const GAMES = [
         items: [
           {
             pt: "Conceito do jogo e definição de features para se destacar dos concorrentes.",
-            en: "Game concept and feature set to stand out from competing tic-tac-toe games.",
+            en: "Game Concept: Defined the concept and feature set to differentiate it from competing tic-tac-toe games.",
           },
           {
             pt: "Mockups, UI e UX como referência para o time de arte.",
-            en: "Mockups, UI and UX as reference for the art team.",
+            en: "UI/UX: Created mockups and UI/UX flows as reference for the art team.",
           },
           {
             pt: "Customização, leaderboards e balanceamento de monetização.",
-            en: "Customization, leaderboards and monetization balancing.",
+            en: "Meta & Monetization: Designed customization and leaderboards, and balanced monetization.",
           },
           {
             pt: "Sistemas de multiplayer e replay, e uma feature para incentivar o multiplayer.",
-            en: "Multiplayer and replay systems, plus a feature to drive multiplayer engagement.",
+            en: "Multiplayer: Designed multiplayer and replay systems, plus a feature to drive multiplayer engagement.",
           },
           {
             pt: "FTUE, eventos de analytics no Game Analytics e documentação de todas as telas e features.",
-            en: "FTUE, Game Analytics events and documentation for every screen and feature.",
+            en: "FTUE & Analytics: Owned the FTUE, GameAnalytics event mapping and documentation for every screen and feature.",
           },
         ],
       },
