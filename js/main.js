@@ -75,8 +75,13 @@
   };
   try { localStorage.removeItem("lang"); } catch {}
 
+  // Português desativado por enquanto: o site fica só em inglês e o
+  // seletor de idioma é escondido. Troque para true para reativar.
+  const PT_ENABLED = false;
+
   let lang = new URLSearchParams(location.search).get("lang") || store.get() || "en";
-  if (!UI[lang]) lang = "en";
+  if (!UI[lang] || (!PT_ENABLED && lang === "pt")) lang = "en";
+  if (!PT_ENABLED) document.querySelectorAll(".lang-switch").forEach((el) => el.remove());
 
   // Texto traduzível: string simples ou { pt, en }
   const t = (v) =>
