@@ -290,6 +290,7 @@ const GAMES = [
     color: "#bfe3f2",
     links: [
       googlePlay("https://play.google.com/store/apps/details?id=com.tapps.virtual.pet.hotel.games.world"),
+      appStore("https://apps.apple.com/br/app/pet-shop-fever-hotel-animal/id1580092431"),
     ],
     sections: [
       {
