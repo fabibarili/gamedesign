@@ -86,8 +86,8 @@ const EXPERIENCE = [
         en: "Built internal tools to streamline production and content pipelines and optimize workflows across disciplines.",
       },
       {
-        pt: "Trabalhei com times internacionais e multidisciplinares para resolver problemas complexos de design e manter produtos live de alta performance.",
-        en: "Partnered with international, cross-functional teams to solve complex design problems and maintain high-performing live products.",
+        pt: "Trabalhei com times internacionais e multidisciplinares para resolver problemas complexos de design e manter jogos live-service de alta performance.",
+        en: "Partnered with international, cross-functional teams to solve complex design problems and maintain high-performing live-service games.",
       },
       {
         pt: "Apliquei um fluxo de trabalho AI-native para criar ferramentas de design que otimizam tarefas, analisam o comportamento e os dados dos jogadores e mantêm dashboards diários de KPIs para monitorar a saúde do jogo, preservando o julgamento criativo, a autoria do design e a tomada de decisão.",
@@ -134,8 +134,8 @@ const EXPERIENCE = [
     location: { pt: "Remoto · Porto Alegre, BR", en: "Remote · Porto Alegre, BR" },
     items: [
       {
-        pt: "Desenvolvimento de jogos com Unity 3D e Unreal para clientes nacionais e internacionais.",
-        en: "Game development with Unity 3D and Unreal for national and international clients.",
+        pt: "Desenvolvimento de jogos com Unity 3D e Unreal Engine para clientes nacionais e internacionais.",
+        en: "Game development with Unity 3D and Unreal Engine for national and international clients.",
       },
       {
         pt: "Desenvolvimento XR para experiências de clientes.",
@@ -147,7 +147,7 @@ const EXPERIENCE = [
       },
       {
         pt: "Game Design e Level Design para projetos internos.",
-        en: "Game Design and Level Design for internal projects.",
+        en: "Game design and level design for internal projects.",
       },
     ],
   },
