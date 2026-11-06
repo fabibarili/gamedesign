@@ -128,7 +128,7 @@
   }
 
   function renderHome() {
-    document.title = `${PROFILE.name} · Game Design Portfolio`;
+    document.title = "Fabi Barili - Game Designer";
     $("#bio").innerHTML = PROFILE.bio.map((p) => `<p>${esc(p)}</p>`).join("");
     $("#photo").src = PROFILE.photo;
     $("#photo").alt = ui("photoOf")(PROFILE.name);
@@ -199,7 +199,7 @@
     const g = GAMES[idx];
 
     if (!g) {
-      document.title = `${ui("notFound")} · ${PROFILE.name}`;
+      document.title = "Fabi Barili - Game Designer";
       gameEl.innerHTML = `
         <div class="not-found">
           <h1 class="game-title">${ui("notFound")}</h1>
@@ -209,7 +209,7 @@
       return;
     }
 
-    document.title = `${t(g.title)} · ${PROFILE.name}`;
+    document.title = "Fabi Barili - Game Designer";
     const prev = GAMES[(idx - 1 + GAMES.length) % GAMES.length];
     const next = GAMES[(idx + 1) % GAMES.length];
 
