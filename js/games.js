@@ -27,8 +27,12 @@ const PROFILE = {
       en: "I identify design problems and solve them through game design principles, market research and game metrics, always aiming to deliver the best possible player experience aligned with business goals. Experienced in working remotely with multicultural teams.",
     },
     {
-      pt: "Graduada em Jogos Digitais, Mestre em Indústria Criativa e com MBA em Game Design. Atualmente explorando novas formas de fazer jogos com AI-assisted game design, mantendo high ownership e independent decision-making, com a criatividade como aliada às novas tecnologias.",
-      en: "I hold a degree in Digital Games, a Master's in Creative Industry and an MBA in Game Design. I'm currently exploring new ways of making games through AI-assisted game design, while keeping high ownership and independent decision-making, and treating creativity as an ally to new technologies.",
+      pt: "Graduada em Jogos Digitais, Mestre em Indústria Criativa e com MBA em Game Design.",
+      en: "I hold a degree in Digital Games, a Master's in Creative Industry and an MBA in Game Design.",
+    },
+    {
+      pt: "Atualmente explorando novas formas de fazer jogos com AI-assisted game design, mantendo high ownership e independent decision-making, com a criatividade como aliada às novas tecnologias.",
+      en: "I'm currently exploring new ways of making games through AI-assisted game design, while keeping high ownership and independent decision-making, and treating creativity as an ally to new technologies.",
     },
   ],
   email: "fabibarili@gmail.com",
