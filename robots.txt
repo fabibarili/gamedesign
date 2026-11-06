@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fabibarili.github.io/gamedesign/sitemap.xml
+Sitemap: https://fabibarili.com/sitemap.xml
