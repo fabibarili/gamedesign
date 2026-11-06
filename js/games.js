@@ -19,16 +19,16 @@ const PROFILE = {
   photo: "assets/foto.jpg",
   bio: [
     {
-      pt: "Game Designer com +5 anos de experiência, baseada no Brasil. Atuo em todo o ciclo de desenvolvimento, do conceito, design de sistemas, lançamento e a gestão do Live Ops.",
-      en: "Game Designer with 5+ years of experience, based in Brazil. I work across the full development cycle, from concept and systems design to launch and Live Ops management.",
+      pt: "Game Designer com +5 anos de experiência, baseada no Brasil. Atuo no ciclo completo de desenvolvimento, do conceito e systems design ao lançamento e à gestão de LiveOps.",
+      en: "Game Designer with 5+ years of experience, based in Brazil. I work across the full development cycle, from concept and systems design through launch and LiveOps management.",
     },
     {
-      pt: "Trabalho na identificação de problemas e busco a solução deles através de conceitos de game design, pesquisa de mercado e métricas do jogo, sempre buscando entregar a melhor experiência para os jogadores conectada aos objetivos do negócio. Experiência em trabalho remoto com equipes multiculturais.",
-      en: "I identify problems and solve them through game design principles, market research and game metrics, always aiming to deliver the best possible player experience while staying connected to business goals. Experienced in working remotely with multicultural teams.",
+      pt: "Identifico problemas de design e os resolvo com princípios de game design, market research e game metrics, sempre buscando entregar a melhor player experience alinhada aos objetivos de negócio. Experiência em trabalho remoto com times multiculturais.",
+      en: "I identify design problems and solve them through game design principles, market research and game metrics, always aiming to deliver the best possible player experience aligned with business goals. Experienced in working remotely with multicultural teams.",
     },
     {
-      pt: "Graduada em Jogos Digitais, Mestre em Indústria Criativa e com MBA em Game Design. Atualmente estudando novas formas de fazer jogos com o uso da Inteligência Artificial, sempre mantendo a autonomia nas decisões e a criatividade como aliada às novas tecnologias.",
-      en: "I hold a degree in Digital Games, a Master's in Creative Industry and an MBA in Game Design. I'm currently exploring new ways of making games with Artificial Intelligence, while keeping ownership of decisions and treating creativity as an ally to new technologies.",
+      pt: "Graduada em Jogos Digitais, Mestre em Indústria Criativa e com MBA em Game Design. Atualmente explorando novas formas de fazer jogos com AI-assisted game design, mantendo high ownership e independent decision-making, com a criatividade como aliada às novas tecnologias.",
+      en: "I hold a degree in Digital Games, a Master's in Creative Industry and an MBA in Game Design. I'm currently exploring new ways of making games through AI-assisted game design, while keeping high ownership and independent decision-making, and treating creativity as an ally to new technologies.",
     },
   ],
   email: "fabibarili@gmail.com",
@@ -62,11 +62,11 @@ const EXPERIENCE = [
     // Uma lista de itens vira tópicos (bullets); um texto único vira parágrafo
     items: [
       {
-        pt: "Fui owner de novas features do conceito à implementação, com foco em retenção de jogadores e iteração contínua de UI/UX.",
+        pt: "Fui owner de novas features do conceito à implementação, com foco em player retention e iteração contínua de UI/UX.",
         en: "Owned new features from concept through implementation, focused on player retention and continuous UI/UX iteration.",
       },
       {
-        pt: "Fui responsável pelo balanceamento, tuning e modelagem da economia do jogo, usando planilhas avançadas (Google Sheets) para otimizar os sistemas de progressão.",
+        pt: "Fui owner do game balancing, tuning e da modelagem da in-game economy, usando advanced spreadsheet models (Google Sheets) para otimizar os progression systems.",
         en: "Owned game balancing, tuning and in-game economy modeling, using advanced spreadsheet models (Google Sheets) to optimize progression systems.",
       },
       {
@@ -74,11 +74,11 @@ const EXPERIENCE = [
         en: "Designed and ran monetization strategies and LiveOps events for live-service games with thousands of concurrent players.",
       },
       {
-        pt: "Conduzi decisões de design orientadas a dados com analytics (GameAnalytics) e KPIs, rodando testes A/B para validar hipóteses de design e otimizar a performance do produto.",
+        pt: "Conduzi decisões de design data-driven com analytics (GameAnalytics) e KPIs, rodando testes A/B para validar hipóteses de design e otimizar a performance do produto.",
         en: "Drove data-driven design decisions using analytics (GameAnalytics) and KPIs, running A/B tests to validate design hypotheses and optimize product performance.",
       },
       {
-        pt: "Fiz pesquisa de mercado e benchmarking de concorrentes para acompanhar as tendências da indústria e trazer boas práticas para o game design.",
+        pt: "Fiz market research e competitive benchmarking para acompanhar as industry trends e trazer best practices para o game design.",
         en: "Conducted market research and competitive benchmarking to track industry trends and bring best practices into game design.",
       },
       {
@@ -86,12 +86,12 @@ const EXPERIENCE = [
         en: "Built internal tools to streamline production and content pipelines and optimize workflows across disciplines.",
       },
       {
-        pt: "Trabalhei com times internacionais e multidisciplinares para resolver problemas complexos de design e manter jogos live-service de alta performance.",
+        pt: "Trabalhei em parceria com times internacionais e cross-functional para resolver problemas complexos de design e manter jogos live-service de alta performance.",
         en: "Partnered with international, cross-functional teams to solve complex design problems and maintain high-performing live-service games.",
       },
       {
         pt: "Apliquei um fluxo de trabalho AI-native para criar ferramentas de design que otimizam tarefas, analisam o comportamento e os dados dos jogadores e mantêm dashboards diários de KPIs para monitorar a saúde do jogo, preservando o julgamento criativo, a autoria do design e a tomada de decisão.",
-        en: "Applied an AI-native workflow to build design tools that optimize tasks, analyze player behavior and data, and maintain daily KPI dashboards to monitor game health, while keeping creative judgment, design ownership and decision-making.",
+        en: "Applied an AI-native workflow to build design tools that optimize tasks, analyze player behavior and data, and maintain daily KPI dashboards to monitor game health, while retaining creative judgment, design ownership and independent decision-making.",
       },
     ],
   },
@@ -110,15 +110,15 @@ const EXPERIENCE = [
         en: "Owned and shipped new features from concept through production, aligning the game's vision with player engagement goals.",
       },
       {
-        pt: "Criei protótipos, mockups interativos e user flows no Figma para iterar na UI/UX e alinhar os times multidisciplinares.",
+        pt: "Criei protótipos, mockups interativos e user flows no Figma para iterar na UI/UX e construir alinhamento entre os times cross-functional.",
         en: "Created prototypes, interactive mockups and user flows in Figma to iterate on UI/UX and build alignment across cross-functional teams.",
       },
       {
-        pt: "Defini o balanceamento, os modelos matemáticos e o tuning da economia do jogo para garantir sistemas de progressão sustentáveis.",
+        pt: "Defini o game balance, os modelos matemáticos e o tuning da in-game economy para garantir sustainable progression systems.",
         en: "Defined game balance, mathematical models and in-game economy tuning to ensure sustainable progression systems.",
       },
       {
-        pt: "Desenhei e integrei estratégias de monetização orientadas a dados para aumentar a receita e maximizar KPIs de monetização como o lifetime value (LTV).",
+        pt: "Desenhei e integrei monetization strategies data-driven para aumentar a receita e maximizar KPIs de monetização como o lifetime value (LTV).",
         en: "Designed and integrated data-driven monetization strategies to grow revenue and maximize monetization KPIs such as lifetime value (LTV).",
       },
       {
@@ -249,15 +249,15 @@ const GAMES = [
         heading: { pt: "Principais contribuições", en: "Key contributions" },
         items: [
           {
-            pt: "Conceito e estratégia de mercado: pesquisa de mercado e análise de concorrentes aprofundadas para definir o core loop, a visão do jogo e seus diferenciais.",
-            en: "Concept & Market Strategy: Led in-depth market research and competitive analysis to define the core loop, game vision and unique selling points (USPs).",
+            pt: "Conceito e estratégia de mercado: market research e competitive analysis aprofundadas para definir o core loop, a visão do jogo e seus diferenciais (USPs).",
+            en: "Concept & Market Strategy: Led in-depth market research and competitive analysis to define the core loop, the game's vision and unique selling points (USPs).",
           },
           {
             pt: "Documentação e UX/UI: Game Design Document (GDD) completo, user flows e wireframes priorizando uma experiência intuitiva para o jogador.",
             en: "Documentation & UX/UI: Authored the full Game Design Document (GDD), user flows and wireframes, prioritizing an intuitive player experience.",
           },
           {
-            pt: "Ferramentas e pipeline: em parceria com a engenharia, desenhei uma ferramenta proprietária de level design na Unity e filtros avançados em planilha, agilizando a prototipação e o balanceamento do jogo.",
+            pt: "Ferramentas e pipeline: em parceria com a engenharia, desenhei uma ferramenta proprietária de level design na Unity e filtros avançados em planilha, agilizando o prototyping e o game balancing.",
             en: "Tools & Pipeline: Partnered with engineering to design a proprietary Unity level design tool and advanced spreadsheet filters, streamlining prototyping and game balancing.",
           },
           {
@@ -265,8 +265,8 @@ const GAMES = [
             en: "Game Feel: Defined the haptic feedback strategy and UI/UX interactions to maximize “juice” and player satisfaction.",
           },
           {
-            pt: "Colaboração multidisciplinar: colaboração ágil com Arte, Engenharia e Produto, cumprindo os milestones com alta qualidade.",
-            en: "Cross-functional Collaboration: Worked in agile cycles with Art, Engineering and Product, hitting milestones while maintaining high quality.",
+            pt: "Colaboração cross-functional: parceria em ciclos ágeis com Arte, Engenharia e Produto, cumprindo os milestones com alta qualidade.",
+            en: "Cross-functional Collaboration: Partnered with Art, Engineering and Product in agile cycles, hitting milestones while maintaining high quality.",
           },
         ],
       },
@@ -304,19 +304,19 @@ const GAMES = [
         heading: H.role,
         items: [
           {
-            pt: "Revisão do core gameplay nos gêneros time management e dash, com benchmark de jogos do gênero.",
-            en: "Competitive Analysis: Benchmarked top time management and dash games to review and refine the core mechanics.",
+            pt: "Revisão do core gameplay nos gêneros time management e dash, com competitive benchmarking dos jogos do gênero.",
+            en: "Competitive Analysis: Benchmarked top time management and dash games to review and refine the core gameplay mechanics.",
           },
           {
-            pt: "Definição de bundles e IAPs e do momento certo de apresentar cada oferta na progressão.",
+            pt: "Definição de bundles e IAPs e do momento certo de apresentar cada oferta ao longo da progression curve.",
             en: "Monetization: Designed bundles and IAP offers, defining when each offer appears along the progression curve.",
           },
           {
-            pt: "Refinamento do FTUE com foco em “pick-and-play”, guiado por métricas de produto.",
+            pt: "Refinamento do FTUE e do onboarding com foco em “pick-and-play”, iterando com base em product metrics.",
             en: "FTUE: Redesigned onboarding around a “pick-and-play” approach, iterating based on product metrics.",
           },
           {
-            pt: "Planejamento de roadmap com o time de produto, prototipação de features e documentação.",
+            pt: "Planejamento do feature roadmap com o time de produto, prototyping de features e design documentation.",
             en: "Roadmap & Prototyping: Planned the feature roadmap with Product, and owned feature prototyping and design documentation.",
           },
         ],
@@ -354,23 +354,23 @@ const GAMES = [
         heading: H.role,
         items: [
           {
-            pt: "Novas features a partir de benchmark de jogos líderes de mercado e insights de jogadores.",
+            pt: "Design de novas features a partir de competitive benchmarking de jogos líderes de mercado e player insights.",
             en: "Feature Design: Designed new features informed by competitive benchmarking and player insights.",
           },
           {
-            pt: "Balanceamento entre novas features e a economia do jogo.",
+            pt: "Balanceamento entre novas features e a in-game economy.",
             en: "Economy Balancing: Balanced new features against the in-game economy to keep progression sustainable.",
           },
           {
-            pt: "Bundles e IAPs com timing estratégico de ofertas.",
+            pt: "Monetização: bundles e IAPs com timing estratégico de ofertas.",
             en: "Monetization: Designed bundles and IAP offers with strategically timed placements.",
           },
           {
-            pt: "Testes A/B identificados a partir de métricas e análise dos resultados.",
+            pt: "Testes A/B identificados a partir de metrics, com análise completa dos resultados.",
             en: "A/B Testing: Identified test opportunities from metrics and ran full post-test analysis.",
           },
           {
-            pt: "FTUE “pick-and-play”, prototipação de features e documentação.",
+            pt: "FTUE “pick-and-play”, prototyping de features e design documentation.",
             en: "FTUE & Prototyping: Designed a “pick-and-play” FTUE, and owned feature prototyping and documentation.",
           },
         ],
@@ -408,11 +408,11 @@ const GAMES = [
         heading: H.role,
         items: [
           {
-            pt: "FTUE: análise passo a passo com KPIs para reduzir o churn inicial, com protótipo da nova versão no Figma.",
+            pt: "FTUE: funnel analysis passo a passo dos KPIs de onboarding para reduzir o early churn, com protótipo do novo fluxo no Figma.",
             en: "FTUE: Ran a step-by-step funnel analysis of onboarding KPIs to reduce early churn, and prototyped the redesigned flow in Figma.",
           },
           {
-            pt: "Level design: balanceamento de dificuldade a partir de métricas das músicas, criando um ritmo envolvente.",
+            pt: "Level design: tuning da difficulty curve a partir de métricas das músicas, criando um pacing envolvente.",
             en: "Level Design: Tuned the difficulty curve using song-level metrics to create engaging pacing.",
           },
           {
@@ -420,12 +420,12 @@ const GAMES = [
             en: "Monetization: Audited each feature's revenue performance and reworked them to deliver more value to players.",
           },
           {
-            pt: "Pesquisa com usuários no Typeform para descobrir que músicas os jogadores queriam e como melhorar a monetização.",
+            pt: "Player research com pesquisas no Typeform para descobrir que músicas os jogadores queriam e como melhorar a monetização.",
             en: "Player Research: Ran Typeform surveys to learn which songs players wanted and where monetization could improve.",
           },
           {
-            pt: "Testes A/B que abriram novas oportunidades de receita e engajamento.",
-            en: "A/B Testing: Ran tests that unlocked new revenue and engagement opportunities.",
+            pt: "Testes A/B que abriram novas oportunidades de receita e player engagement.",
+            en: "A/B Testing: Ran tests that unlocked new revenue and player engagement opportunities.",
           },
         ],
       },
@@ -477,26 +477,26 @@ const GAMES = [
         heading: H.role,
         items: [
           {
-            pt: "Level design: análise com dados do Game Analytics para encontrar os principais pontos de churn e proposta de reestruturação das fases iniciais.",
+            pt: "Level design: análise com dados do Game Analytics para encontrar os principais churn points e proposta de reestruturação das fases do early game.",
             en: "Level Design: Used GameAnalytics data to pinpoint the main churn points, and restructured the early-game levels.",
           },
           {
-            pt: "Testes A/B do novo level design, além de testes de live ops, monetização e dificuldade, baseados em KPIs e hipóteses.",
+            pt: "Testes A/B do novo level design, além de testes de LiveOps, monetização e dificuldade, baseados em KPIs e design hypotheses.",
             en: "A/B Testing: Tested the new level design, plus LiveOps, monetization and difficulty changes, based on KPIs and design hypotheses.",
           },
           {
-            pt: "Pesquisa com usuários (idade, gênero, regiões, perfis e hábitos de compra) para criar estratégias de monetização por tiers.",
+            pt: "Player research (idade, gênero, regiões, perfis e hábitos de compra) para criar monetization strategies por tiers.",
             en: "Player Research: Segmented players by age, gender, region, profile and spending habits to build tier-based monetization strategies.",
           },
           {
-            pt: "Live ops: eventos para aumentar retenção e receita, com base em benchmarks como Royal Match.",
-            en: "LiveOps: Designed in-game events to boost retention and revenue, benchmarked against top titles such as Royal Match.",
+            pt: "LiveOps: live events para aumentar a player retention e a receita, com base em benchmarks como Royal Match.",
+            en: "LiveOps: Designed live events to boost player retention and revenue, benchmarked against top titles such as Royal Match.",
           },
           {
-            pt: "Mapeamento de eventos de analytics para coletar KPIs mais detalhados.",
+            pt: "Analytics: mapeamento de eventos de analytics para coletar KPIs mais detalhados.",
             en: "Analytics: Mapped analytics events to capture more granular KPI data.",
           },
-          { pt: "Documentação de todas as features e decisões.", en: "Documentation: Documented every feature and design decision." },
+          { pt: "Design documentation de todas as features e decisões de design.", en: "Documentation: Documented every feature and design decision." },
         ],
       },
       {
@@ -595,11 +595,11 @@ const GAMES = [
         },
         items: [
           {
-            pt: "Organização dos core loops, monetização, balanceamento e desbloqueio de torres; estrutura de como o jogador ganha e gasta recursos.",
-            en: "Systems Design: Structured the core loop, monetization, tower unlocks and resource economy (how players earn and spend).",
+            pt: "Organização dos core loops, monetização, balanceamento e desbloqueio de torres; estrutura da in-game economy (como o jogador ganha e gasta recursos).",
+            en: "Systems Design: Structured the core loops, monetization, balancing and tower unlocks, plus the in-game economy (how players earn and spend resources).",
           },
           {
-            pt: "Definição de vida e poder das torres e do ritmo das fases.",
+            pt: "Definição de vida e poder das torres e do pacing das fases.",
             en: "Balancing: Defined tower health and power values, and the pacing of each level.",
           },
           {
@@ -611,8 +611,8 @@ const GAMES = [
             en: "Enemy & Power-up Tuning: Balanced enemy stats (attack, health and spawn presence) and power-ups.",
           },
           {
-            pt: "Análise de problemas de UI/UX junto ao time de arte e documentação para devs.",
-            en: "UX & Documentation: Identified UI/UX issues with the art team, and kept developer documentation up to date.",
+            pt: "Análise de problemas de UI/UX em parceria com o time de arte e design documentation para engineering.",
+            en: "UX & Documentation: Partnered with the art team to identify UI/UX issues, and kept design documentation up to date for engineering.",
           },
         ],
       },
@@ -653,8 +653,8 @@ const GAMES = [
       {
         heading: H.role,
         body: {
-          pt: "Freelance de 2 meses corrigindo a experiência de gameplay, melhorando as informações do jogo e o fluxo de telas.",
-          en: "Two-month freelance contract fixing the gameplay experience and improving in-game information and screen flow.",
+          pt: "Freelance de 2 meses corrigindo a gameplay experience, melhorando as informações do jogo e os user flows.",
+          en: "Two-month freelance contract fixing the gameplay experience and improving in-game information and user flows.",
         },
       },
     ],
@@ -691,8 +691,8 @@ const GAMES = [
             en: "Level Design: Built new levels with varied objectives directly in Unity.",
           },
           {
-            pt: "Balanceamento de personagens e inimigos para uma experiência desafiadora e divertida.",
-            en: "Balancing: Tuned character and enemy stats for a challenging yet enjoyable experience.",
+            pt: "Balancing: tuning de personagens e inimigos para uma player experience desafiadora e divertida.",
+            en: "Balancing: Tuned character and enemy stats for a challenging yet enjoyable player experience.",
           },
         ],
       },
@@ -734,11 +734,11 @@ const GAMES = [
             en: "UI/UX: Created mockups and UI/UX flows as reference for the art team.",
           },
           {
-            pt: "Customização, conquistas (para iniciantes, intermediários e avançados) e leaderboards, com balanceamento de recompensas.",
+            pt: "Customização, conquistas (para iniciantes, intermediários e avançados) e leaderboards, com balanceamento de rewards.",
             en: "Meta Systems: Designed customization, achievements (for beginner, intermediate and advanced players) and leaderboards, with balanced rewards.",
           },
           {
-            pt: "Sistemas de multiplayer e replay, e uma feature para incentivar o multiplayer.",
+            pt: "Sistemas de multiplayer e replay, e uma feature para incentivar o multiplayer engagement.",
             en: "Multiplayer: Designed multiplayer and replay systems, plus a feature to drive multiplayer engagement.",
           },
           {
@@ -806,7 +806,7 @@ const GAMES = [
             en: "Meta & Monetization: Designed customization and leaderboards, and balanced monetization.",
           },
           {
-            pt: "Sistemas de multiplayer e replay, e uma feature para incentivar o multiplayer.",
+            pt: "Sistemas de multiplayer e replay, e uma feature para incentivar o multiplayer engagement.",
             en: "Multiplayer: Designed multiplayer and replay systems, plus a feature to drive multiplayer engagement.",
           },
           {
