@@ -11,7 +11,6 @@
       cta: "Jogos ↓",
       gamesTitle: "Jogos",
       play: "Jogar ▶",
-      comingSoon: "Próximo jogo em breve",
       photo: "Foto",
       footer: "feito com café, vinho & curiosidade",
       ticker: ["Protótipos", "Experimentos", "Ideias aleatórias", "Jogos para amigos", "Realizando sonhos"],
@@ -25,7 +24,6 @@
       cta: "Games ↓",
       gamesTitle: "Games",
       play: "Play ▶",
-      comingSoon: "Next game coming soon",
       photo: "Photo",
       footer: "made with coffee, wine & curiosity",
       ticker: ["Prototypes", "Experiments", "Random ideas", "Games for friends", "Making dreams come true"],
@@ -80,7 +78,7 @@
           <span class="fun-play">${ui("play")}</span>
         </div>
         <div class="fun-body">
-          <div class="fun-meta"><span>${esc(g.madeWith)}</span><span>${esc(g.year)}</span></div>
+          <div class="fun-meta"><span>${esc(g.madeWith)}</span></div>
           <h3>${esc(g.title)}</h3>
           <p>${esc(g.tagline)}</p>
           ${g.tags && g.tags.length ? `<div class="tags">${g.tags.map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>` : ""}
@@ -88,12 +86,6 @@
       </a>`;
     });
 
-    // Um card de "em breve" no fim da lista
-    cards.push(`
-      <div class="fun-card is-empty" aria-hidden="true">
-        <span class="plus">+</span>
-        <span class="mono-label">${ui("comingSoon")}</span>
-      </div>`);
     $("#games").innerHTML = cards.join("");
   }
 

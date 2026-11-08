@@ -56,7 +56,6 @@ const FUN = {
    *   color    cor de fundo do banner enquanto a imagem carrega
    *   url      link para jogar (itch.io, página no próprio site, etc.)
    *   madeWith ferramenta usada (ex: "Unity", "Godot", "HTML5")
-   *   year     ano
    *   tags     lista de etiquetas (ex: ["Puzzle", "Game Jam"])
    */
   games: [
@@ -68,7 +67,6 @@ const FUN = {
     //   color: "#ffd23f",
     //   url: "https://fabibarili.itch.io/meu-jogo",
     //   madeWith: "Unity",
-    //   year: "2026",
     //   tags: ["Puzzle", "Game Jam"],
     // },
     {
@@ -82,7 +80,6 @@ const FUN = {
       color: "#4fb0f0",
       url: "jogos/guido/",
       madeWith: "HTML5",
-      year: "2026",
       tags: [{ pt: "Plataforma", en: "Platformer" }, "Pixel art", "Mobile"],
     },
     {
@@ -96,7 +93,6 @@ const FUN = {
       color: "#4fc0ca",
       url: "jogos/missao-casamento/",
       madeWith: "HTML5",
-      year: "2026",
       tags: ["Arcade", "Pixel art", "Mobile"],
     },
     {
@@ -110,7 +106,6 @@ const FUN = {
       color: "#0b0f24",
       url: "jogos/bellinha/",
       madeWith: "HTML5",
-      year: "2026",
       tags: [{ pt: "Futebol", en: "Football" }, "Pixel art", "Mobile"],
     },
   ],
