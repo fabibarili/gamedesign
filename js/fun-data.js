@@ -75,8 +75,8 @@ const FUN = {
       id: "guido-coffee",
       title: "Guido — Aventura do Café",
       tagline: {
-        pt: "Plataforma com a Guido: pegue os grãos de café, pule nos cubos de açúcar e chegue à cafeteria.",
-        en: "A platformer starring Guido: grab the coffee beans, stomp the sugar cubes and make it to the café.",
+        pt: "Ajude o Guido a coletar grãos de café para a cafeteria.",
+        en: "Help Guido collect coffee beans for the café.",
       },
       cover: "assets/fun/guido-coffee.png",
       color: "#4fb0f0",
@@ -89,8 +89,8 @@ const FUN = {
       id: "missao-casamento",
       title: "Missão Casamento",
       tagline: {
-        pt: "Pilote o aviãozinho até o casamento: desvie dos obstáculos e chegue a tempo para o \"sim\".",
-        en: "Fly the little plane to the wedding: dodge the obstacles and make it in time for the \"I do\".",
+        pt: "Pilote o avião entre obstáculos para chegar ao casamento.",
+        en: "Fly the plane past obstacles to make it to the wedding.",
       },
       cover: "assets/fun/pitolo-wedding.png",
       color: "#4fc0ca",
@@ -103,8 +103,8 @@ const FUN = {
       id: "bellinha-game",
       title: "Bellinha Game",
       tagline: {
-        pt: "Cobre pênaltis com o Messi: arraste para mirar, segure para chutar e engane o goleiro.",
-        en: "Take penalties as Messi: drag to aim, hold to shoot and fool the goalkeeper.",
+        pt: "Messi tem uma amizade muito especial enquanto disputa partidas.",
+        en: "Messi shares a very special friendship while playing his matches.",
       },
       cover: "assets/fun/bellinha-game.png",
       color: "#0b0f24",
