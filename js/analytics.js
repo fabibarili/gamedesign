@@ -59,8 +59,34 @@
     });
   }
 
+  // Estilo do banner dentro do próprio script, para funcionar também nos jogos
+  // (que não carregam o css/style.css). Usa as cores do site quando existem.
+  const CSS =
+    ".consent{position:fixed;left:16px;right:16px;bottom:16px;z-index:2147483000;max-width:560px;margin:0 auto;" +
+    "display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;padding:16px 18px;box-sizing:border-box;" +
+    "background:var(--surface,#fff);color:var(--text,#1b365d);border:1px solid var(--line,#c6e6ef);" +
+    "border-radius:var(--radius,14px);box-shadow:0 10px 30px rgba(0,0,0,.25);" +
+    "font:15px/1.45 var(--font,system-ui,-apple-system,'Segoe UI',sans-serif);text-align:left}" +
+    ".consent-text{margin:0;flex:1 1 240px}" +
+    ".consent-actions{display:flex;gap:8px}" +
+    ".consent-btn{cursor:pointer;font:inherit;font-size:14px;font-weight:500;padding:9px 18px;border-radius:999px;" +
+    "border:1px solid var(--line,#c6e6ef);background:var(--surface,#fff);color:var(--text,#1b365d);transition:transform .15s}" +
+    ".consent-btn:hover{transform:translateY(-2px)}" +
+    ".consent-btn.primary{background:var(--accent,#005a9c);border-color:var(--accent,#005a9c);color:var(--on-accent,#fff)}" +
+    ".consent-link{margin-left:12px;padding:0;background:none;border:0;color:inherit;font:inherit;" +
+    "text-decoration:underline;cursor:pointer;opacity:.75}" +
+    ".consent-link:hover{opacity:1}";
+  function injectStyles() {
+    if (document.getElementById("consent-style")) return;
+    const st = document.createElement("style");
+    st.id = "consent-style";
+    st.textContent = CSS;
+    document.head.appendChild(st);
+  }
+
   function showBanner() {
     if (document.querySelector(".consent")) return;
+    injectStyles();
     const box = document.createElement("div");
     box.className = "consent";
     box.setAttribute("role", "dialog");
@@ -69,8 +95,8 @@
     box.innerHTML =
       '<p class="consent-text"></p>' +
       '<div class="consent-actions">' +
-      '<button type="button" class="btn" data-choice="denied"></button>' +
-      '<button type="button" class="btn primary" data-choice="granted"></button>' +
+      '<button type="button" class="consent-btn" data-choice="denied"></button>' +
+      '<button type="button" class="consent-btn primary" data-choice="granted"></button>' +
       "</div>";
     box.querySelector(".consent-text").textContent = T.text;
     box.querySelector('[data-choice="denied"]').textContent = T.decline;
@@ -91,6 +117,7 @@
   function addSettingsLink() {
     const footer = document.querySelector("footer .container") || document.querySelector("footer");
     if (!footer || footer.querySelector(".consent-link")) return;
+    injectStyles();
     const b = document.createElement("button");
     b.type = "button";
     b.className = "consent-link";
