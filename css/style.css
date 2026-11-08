@@ -615,13 +615,24 @@ a { color: inherit; }
 .nav a.nav-fun:hover { color: var(--text); }
 
 /* Botão para a página "Just for fun!" (hero)
-   Mesmo formato dos outros botões; só o texto segue o título da fun.html
-   (fonte display + marca-texto em "fun!") */
+   Texto igual ao título da fun.html (fonte display + marca-texto em "fun!")
+   e contorno grosso com sombra sólida, na cor de borda dos outros botões */
 .btn.btn-fun {
   font-family: "Bricolage Grotesque", var(--font);
   font-weight: 800;
   letter-spacing: -0.01em;
+  border: 2px solid var(--line);
+  padding: 9px 19px;
+  box-shadow: 3px 3px 0 var(--line);
+  transition: transform 0.15s, box-shadow 0.15s;
 }
+.btn.btn-fun:hover {
+  transform: translate(-2px, -2px);
+  border-color: var(--line);
+  box-shadow: 5px 5px 0 var(--line);
+}
+.btn.btn-fun:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--line); }
+.btn.btn-fun:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .btn-fun .hl {
   position: relative;
   display: inline-block;
