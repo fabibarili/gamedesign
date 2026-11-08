@@ -613,3 +613,40 @@ a { color: inherit; }
   color: var(--accent);
 }
 .nav a.nav-fun:hover { color: var(--text); }
+
+/* ---------- Banner de consentimento (analytics) ---------- */
+.consent {
+  position: fixed;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  z-index: 100;
+  max-width: 560px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 16px;
+  padding: 16px 18px;
+  background: var(--surface);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+.consent-text { margin: 0; flex: 1 1 260px; font-size: 0.92rem; }
+.consent-actions { display: flex; gap: 8px; }
+.consent .btn { cursor: pointer; font: inherit; font-size: 0.9rem; color: var(--text); }
+.consent .btn.primary { color: var(--on-accent); }
+.consent-link {
+  margin-left: 12px;
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  cursor: pointer;
+  opacity: 0.75;
+}
+.consent-link:hover { opacity: 1; }
