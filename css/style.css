@@ -606,3 +606,10 @@ a { color: inherit; }
 .game-title,
 .game-section h2,
 .exp-trigger { color: var(--heading); }
+
+/* Link para a página "Just for fun!" */
+.nav a.nav-fun {
+  font-weight: 600;
+  color: var(--accent);
+}
+.nav a.nav-fun:hover { color: var(--text); }

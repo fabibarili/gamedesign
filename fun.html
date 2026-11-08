@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎮</text></svg>" />
+  <title>Just for fun! - Fabi Barili</title>
+  <meta name="description" content="Games Fabi Barili makes for fun as a hobby: small experiments, game jams and side projects you can play right in the browser." />
+  <meta name="author" content="Fabi Barili" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://fabibarili.com/fun.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Fabi Barili - Game Designer" />
+  <meta property="og:title" content="Just for fun! - Fabi Barili" />
+  <meta property="og:description" content="Games I make for fun as a hobby. Pick one and play!" />
+  <meta property="og:url" content="https://fabibarili.com/fun.html" />
+  <meta property="og:image" content="https://fabibarili.com/assets/foto.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/fun.css" />
+</head>
+<body class="fun-page fun-inverted">
+  <header class="site-header">
+    <div class="container">
+      <a href="index.html" class="logo">Fabi Barili</a>
+      <div class="header-right">
+        <nav class="nav">
+          <a href="index.html" data-i18n="navPortfolio">← Portfolio</a>
+          <a href="#jogos" data-i18n="navGames">Games</a>
+        </nav>
+        <div class="lang-switch" role="group" aria-label="Idioma / Language">
+          <button type="button" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" data-lang="pt" aria-pressed="false">PT</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="fun-hero">
+      <div class="container">
+        <div class="fun-intro">
+          <span class="mono-label" data-i18n="label">// side projects</span>
+          <h1 class="fun-title">Just for <span class="hl">fun!</span></h1>
+          <p class="fun-lead" data-i18n="subtitle">Games I make because making games is fun.</p>
+          <div class="fun-text" id="intro"></div>
+          <a href="#jogos" class="btn primary" data-i18n="cta">Games ↓</a>
+        </div>
+        <div class="collage" id="photos"></div>
+      </div>
+    </section>
+
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" id="ticker"></div>
+    </div>
+
+    <section class="fun-section" id="jogos">
+      <div class="container">
+        <div class="fun-head">
+          <h2 data-i18n="gamesTitle">Pick a game</h2>
+          <span class="mono-label" id="games-count"></span>
+        </div>
+        <div class="fun-games" id="games"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container fun-footer">
+      <span>© <span id="year"></span> Fabi Barili</span>
+      <span class="mono-label" data-i18n="footer">made with coffee, wine &amp; curiosity</span>
+    </div>
+  </footer>
+
+  <script src="js/fun-data.js"></script>
+  <script src="js/fun.js"></script>
+</body>
+</html>

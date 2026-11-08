@@ -1,0 +1,153 @@
+(function () {
+  const $ = (sel) => document.querySelector(sel);
+
+  const UI = {
+    pt: {
+      htmlLang: "pt-BR",
+      navPortfolio: "← Portfólio",
+      navGames: "Jogos",
+      label: "// projetos pessoais",
+      subtitle: "Jogos que eu faço porque fazer jogos é divertido.",
+      cta: "Jogos ↓",
+      gamesTitle: "Escolha um jogo",
+      games: (n) => `${String(n).padStart(2, "0")} jogo${n === 1 ? "" : "s"}`,
+      play: "Jogar ▶",
+      comingSoon: "Próximo jogo em breve",
+      photo: "Foto",
+      footer: "feito com café, vinho & curiosidade",
+      ticker: ["Protótipos", "Experimentos", "Ideias aleatórias", "Jogos para amigos", "Realizando sonhos"],
+    },
+    en: {
+      htmlLang: "en",
+      navPortfolio: "← Portfolio",
+      navGames: "Games",
+      label: "// side projects",
+      subtitle: "Games I make because making games is fun.",
+      cta: "Games ↓",
+      gamesTitle: "Pick a game",
+      games: (n) => `${String(n).padStart(2, "0")} game${n === 1 ? "" : "s"}`,
+      play: "Play ▶",
+      comingSoon: "Next game coming soon",
+      photo: "Photo",
+      footer: "made with coffee, wine & curiosity",
+      ticker: ["Prototypes", "Experiments", "Random ideas", "Games for friends", "Making dreams come true"],
+    },
+  };
+
+  // Mesmo comportamento da página principal: o idioma vale só nesta aba.
+  const store = {
+    get() { try { return sessionStorage.getItem("lang"); } catch { return null; } },
+    set(v) { try { sessionStorage.setItem("lang", v); } catch {} },
+  };
+
+  let lang = new URLSearchParams(location.search).get("lang") || store.get() || "en";
+  if (!UI[lang]) lang = "en";
+
+  const t = (v) =>
+    v && typeof v === "object" && !Array.isArray(v) ? v[lang] ?? v.pt ?? v.en ?? "" : v ?? "";
+  const ui = (k) => UI[lang][k];
+  const esc = (s) =>
+    String(t(s)).replace(/[&<>"']/g, (c) => ({
+      "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;",
+    })[c]);
+
+  const CAMERA = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 8.5A2.5 2.5 0 0 1 5.5 6h1.6l1.4-2h7l1.4 2h1.6A2.5 2.5 0 0 1 21 8.5v9a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.5"/></svg>';
+
+  function renderPhotos() {
+    const photos = (FUN.photos || []).slice(0, 3);
+    const list = photos.length ? photos : [null, null, null];
+    const el = $("#photos");
+    el.className = `collage count-${list.length}`;
+    el.innerHTML = list.map((p, i) => p
+      ? `<figure class="p${i}${p.cutout ? " is-cutout" : ""}"><img src="${esc(p.src)}" alt="${esc(p.alt || p.caption || "Fabi Barili")}"${p.position ? ` style="object-position:${esc(p.position)}"` : ""} />${t(p.caption) ? `<figcaption>${esc(p.caption)}</figcaption>` : ""}</figure>`
+      : `<figure class="p${i} is-empty" aria-hidden="true">${CAMERA}</figure>`
+    ).join("");
+  }
+
+  function renderTicker() {
+    const words = ui("ticker");
+    const row = words.map((w) => `<span>${esc(w)}</span><span>✦</span>`).join("");
+    $("#ticker").innerHTML = row + row + row + row; // repetido para o loop não ter emenda
+  }
+
+  function renderGames() {
+    const games = FUN.games || [];
+    $("#games-count").textContent = games.length ? ui("games")(games.length) : "";
+
+    const cards = games.map((g, i) => {
+      const external = /^https?:\/\//.test(g.url || "");
+      return `
+      <a class="fun-card" href="${esc(g.url || "#")}"${external ? ' target="_blank" rel="noopener"' : ""}>
+        <div class="fun-cover" style="background:${esc(g.color || "var(--line)")}">
+          ${g.cover ? `<img src="${esc(g.cover)}" alt="" loading="lazy" />` : ""}
+          <span class="fun-num">${String(i + 1).padStart(2, "0")}</span>
+          <span class="fun-play">${ui("play")}</span>
+        </div>
+        <div class="fun-body">
+          <div class="fun-meta"><span>${esc(g.madeWith)}</span><span>${esc(g.year)}</span></div>
+          <h3>${esc(g.title)}</h3>
+          <p>${esc(g.tagline)}</p>
+          ${g.tags && g.tags.length ? `<div class="tags">${g.tags.map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>` : ""}
+        </div>
+      </a>`;
+    });
+
+    // Um card de "em breve" no fim da lista
+    cards.push(`
+      <div class="fun-card is-empty" aria-hidden="true">
+        <span class="plus">+</span>
+        <span class="mono-label">${ui("comingSoon")}</span>
+      </div>`);
+    $("#games").innerHTML = cards.join("");
+  }
+
+  function render() {
+    document.documentElement.lang = ui("htmlLang");
+    document.querySelectorAll("[data-i18n]").forEach((el) => (el.textContent = ui(el.dataset.i18n)));
+    document.querySelectorAll("[data-lang]").forEach((b) =>
+      b.setAttribute("aria-pressed", String(b.dataset.lang === lang))
+    );
+    $("#intro").innerHTML =
+      (t(FUN.quote) ? `<p class="fun-quote">${esc(FUN.quote)}</p>` : "") +
+      (FUN.intro || []).map((p) => `<p>${esc(p)}</p>`).join("");
+    $("#year").textContent = new Date().getFullYear();
+    renderPhotos();
+    renderTicker();
+    renderGames();
+  }
+
+  // Inclinação 3D leve dos cards seguindo o mouse
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const grid = $("#games");
+  if (!reduceMotion && matchMedia("(hover: hover)").matches) {
+    grid.addEventListener("pointermove", (ev) => {
+      const card = ev.target.closest("a.fun-card");
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      const x = (ev.clientX - r.left) / r.width;
+      const y = (ev.clientY - r.top) / r.height;
+      card.style.setProperty("--ry", `${(x - 0.5) * 8}deg`);
+      card.style.setProperty("--rx", `${(0.5 - y) * 6}deg`);
+      card.style.setProperty("--mx", `${x * 100}%`);
+      card.style.setProperty("--my", `${y * 100}%`);
+    });
+    grid.addEventListener("pointerout", (ev) => {
+      const card = ev.target.closest("a.fun-card");
+      if (card && !card.contains(ev.relatedTarget)) {
+        card.style.removeProperty("--rx");
+        card.style.removeProperty("--ry");
+      }
+    });
+  }
+
+  document.querySelectorAll("[data-lang]").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      if (btn.dataset.lang === lang) return;
+      lang = btn.dataset.lang;
+      store.set(lang);
+      render();
+    })
+  );
+
+  render();
+})();
