@@ -240,6 +240,18 @@ a.fun-card:focus-visible .fun-play { opacity: 1; transform: none; }
 }
 .fun-card p { color: var(--muted); font-size: 0.95rem; }
 
+/* Seletor de idioma com bandeiras */
+.fun-page .lang-switch button {
+  font-size: 1.05rem;
+  line-height: 1;
+  padding: 5px 9px;
+  opacity: 0.55;
+  filter: grayscale(0.6);
+  transition: background 0.2s, opacity 0.2s, filter 0.2s;
+}
+.fun-page .lang-switch button:hover { opacity: 0.9; filter: none; }
+.fun-page .lang-switch button[aria-pressed="true"] { opacity: 1; filter: none; }
+
 /* ---------- Rodapé ---------- */
 .fun-footer { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
 
