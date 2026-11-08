@@ -9,8 +9,7 @@
       label: "// projetos pessoais",
       subtitle: "Jogos que eu faço porque fazer jogos é divertido.",
       cta: "Jogos ↓",
-      gamesTitle: "Escolha um jogo",
-      games: (n) => `${String(n).padStart(2, "0")} jogo${n === 1 ? "" : "s"}`,
+      gamesTitle: "Jogos",
       play: "Jogar ▶",
       comingSoon: "Próximo jogo em breve",
       photo: "Foto",
@@ -24,8 +23,7 @@
       label: "// side projects",
       subtitle: "Games I make because making games is fun.",
       cta: "Games ↓",
-      gamesTitle: "Pick a game",
-      games: (n) => `${String(n).padStart(2, "0")} game${n === 1 ? "" : "s"}`,
+      gamesTitle: "Games",
       play: "Play ▶",
       comingSoon: "Next game coming soon",
       photo: "Photo",
@@ -72,7 +70,6 @@
 
   function renderGames() {
     const games = FUN.games || [];
-    $("#games-count").textContent = games.length ? ui("games")(games.length) : "";
 
     const cards = games.map((g) => {
       const external = /^https?:\/\//.test(g.url || "");
