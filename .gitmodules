@@ -1,0 +1,12 @@
+[submodule "jogos/guido"]
+	path = jogos/guido
+	url = https://github.com/fabibarili/guido-coffee.git
+	branch = main
+[submodule "jogos/missao-casamento"]
+	path = jogos/missao-casamento
+	url = https://github.com/fabibarili/pitolo-wedding.git
+	branch = main
+[submodule "jogos/bellinha"]
+	path = jogos/bellinha
+	url = https://github.com/fabibarili/bellinha-game.git
+	branch = main

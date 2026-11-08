@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://fabibarili.com/</loc><priority>1.0</priority></url>
   <url><loc>https://fabibarili.com/fun.html</loc><priority>0.8</priority></url>
+  <url><loc>https://fabibarili.com/jogos/guido/</loc><priority>0.6</priority></url>
+  <url><loc>https://fabibarili.com/jogos/missao-casamento/</loc><priority>0.6</priority></url>
+  <url><loc>https://fabibarili.com/jogos/bellinha/</loc><priority>0.6</priority></url>
   <url><loc>https://fabibarili.com/game.html?id=colorwood-associations</loc><priority>0.7</priority></url>
   <url><loc>https://fabibarili.com/game.html?id=pet-shop-fever</loc><priority>0.7</priority></url>
   <url><loc>https://fabibarili.com/game.html?id=dino-quest-2</loc><priority>0.7</priority></url>

@@ -74,13 +74,12 @@
     const games = FUN.games || [];
     $("#games-count").textContent = games.length ? ui("games")(games.length) : "";
 
-    const cards = games.map((g, i) => {
+    const cards = games.map((g) => {
       const external = /^https?:\/\//.test(g.url || "");
       return `
       <a class="fun-card" href="${esc(g.url || "#")}"${external ? ' target="_blank" rel="noopener"' : ""}>
         <div class="fun-cover" style="background:${esc(g.color || "var(--line)")}">
           ${g.cover ? `<img src="${esc(g.cover)}" alt="" loading="lazy" />` : ""}
-          <span class="fun-num">${String(i + 1).padStart(2, "0")}</span>
           <span class="fun-play">${ui("play")}</span>
         </div>
         <div class="fun-body">
@@ -114,30 +113,6 @@
     renderPhotos();
     renderTicker();
     renderGames();
-  }
-
-  // Inclinação 3D leve dos cards seguindo o mouse
-  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const grid = $("#games");
-  if (!reduceMotion && matchMedia("(hover: hover)").matches) {
-    grid.addEventListener("pointermove", (ev) => {
-      const card = ev.target.closest("a.fun-card");
-      if (!card) return;
-      const r = card.getBoundingClientRect();
-      const x = (ev.clientX - r.left) / r.width;
-      const y = (ev.clientY - r.top) / r.height;
-      card.style.setProperty("--ry", `${(x - 0.5) * 8}deg`);
-      card.style.setProperty("--rx", `${(0.5 - y) * 6}deg`);
-      card.style.setProperty("--mx", `${x * 100}%`);
-      card.style.setProperty("--my", `${y * 100}%`);
-    });
-    grid.addEventListener("pointerout", (ev) => {
-      const card = ev.target.closest("a.fun-card");
-      if (card && !card.contains(ev.relatedTarget)) {
-        card.style.removeProperty("--rx");
-        card.style.removeProperty("--ry");
-      }
-    });
   }
 
   document.querySelectorAll("[data-lang]").forEach((btn) =>
