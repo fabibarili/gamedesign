@@ -219,6 +219,43 @@ a.fun-card:hover .fun-play,
 a.fun-card:focus-visible .fun-play { opacity: 1; transform: none; }
 @media (hover: none) { .fun-play { opacity: 1; transform: none; } }
 
+/* Jogo ainda bloqueado: tag "Em breve" por cima da capa */
+.fun-card.is-soon { cursor: default; }
+.fun-card.is-soon .fun-cover img { filter: grayscale(0.55) brightness(0.8); }
+.fun-card.is-soon .fun-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 34, 64, 0.35);
+}
+.fun-tape {
+  position: absolute;
+  top: 50%; left: 50%;
+  z-index: 1;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+  width: 160%;
+  padding: 9px 0;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  overflow: hidden;
+  color: #111;
+  background:
+    repeating-linear-gradient(-45deg, #111 0 10px, #ffd400 10px 20px) top / 100% 7px no-repeat,
+    repeating-linear-gradient(-45deg, #111 0 10px, #ffd400 10px 20px) bottom / 100% 7px no-repeat,
+    #ffd400;
+  box-shadow: 0 6px 14px -6px rgba(0, 0, 0, 0.6);
+}
+.fun-tape span { padding-top: 4px; padding-bottom: 2px; }
+.fun-tape span::after { content: "✕"; margin-left: 18px; }
+.fun-tape.t1 { transform: translate(-50%, -50%) rotate(-14deg); }
+.fun-tape.t2 { transform: translate(-50%, -50%) rotate(10deg); filter: brightness(0.93); }
+
 .fun-body { padding: 20px 24px 26px; }
 .fun-meta {
   display: flex;

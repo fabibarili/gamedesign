@@ -57,6 +57,7 @@ const FUN = {
    *   url      link para jogar (itch.io, página no próprio site, etc.)
    *   madeWith ferramenta usada (ex: "Unity", "Godot", "HTML5")
    *   tags     lista de etiquetas (ex: ["Puzzle", "Game Jam"])
+   *   comingSoon true para mostrar a tag "Em breve" e bloquear o jogo
    */
   games: [
     // {
@@ -69,19 +70,21 @@ const FUN = {
     //   madeWith: "Unity",
     //   tags: ["Puzzle", "Game Jam"],
     // },
-    {
-      id: "guido-coffee",
-      title: "Guido — Aventura do Café",
-      tagline: {
-        pt: "Ajude o Guido a coletar grãos de café para a cafeteria.",
-        en: "Help Guido collect coffee beans for the café.",
-      },
-      cover: "assets/fun/guido-coffee.png",
-      color: "#4fb0f0",
-      url: "jogos/guido/",
-      madeWith: "HTML5",
-      tags: [{ pt: "Plataforma", en: "Platformer" }, "Pixel art", "Mobile"],
-    },
+    // GUIDO — fora do site por enquanto. Para voltar, tire os "// " destas linhas.
+    // {
+    //   id: "guido-coffee",
+    //   title: "Guido — Aventura do Café",
+    //   tagline: {
+    //     pt: "Ajude o Guido a coletar grãos de café para a cafeteria.",
+    //     en: "Help Guido collect coffee beans for the café.",
+    //   },
+    //   cover: "assets/fun/guido-coffee.png",
+    //   color: "#4fb0f0",
+    //   url: "jogos/guido/",
+    //   comingSoon: true,
+    //   madeWith: "HTML5",
+    //   tags: [{ pt: "Plataforma", en: "Platformer" }, "Pixel art", "Mobile"],
+    // },
     {
       id: "missao-casamento",
       title: "Missão Casamento",

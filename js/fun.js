@@ -11,6 +11,7 @@
       cta: "Jogos ↓",
       gamesTitle: "Jogos",
       play: "Jogar ▶",
+      soon: "Em breve",
       photo: "Foto",
       footer: "feito com café, vinho & curiosidade",
       ticker: ["Protótipos", "Experimentos", "Ideias aleatórias", "Jogos para amigos", "Realizando sonhos"],
@@ -24,6 +25,7 @@
       cta: "Games ↓",
       gamesTitle: "Games",
       play: "Play ▶",
+      soon: "Coming soon",
       photo: "Photo",
       footer: "made with coffee, wine & curiosity",
       ticker: ["Prototypes", "Experiments", "Random ideas", "Games for friends", "Making dreams come true"],
@@ -66,24 +68,35 @@
     $("#ticker").innerHTML = row + row + row + row; // repetido para o loop não ter emenda
   }
 
+  // Duas fitas de "proibido" cruzadas sobre a capa, com o texto repetido.
+  function tapes(label) {
+    const text = Array(8).fill(`<span>${esc(label)}</span>`).join("");
+    return `<span class="fun-tape t1" role="img" aria-label="${esc(label)}">${text}</span>` +
+      `<span class="fun-tape t2" aria-hidden="true">${text}</span>`;
+  }
+
   function renderGames() {
     const games = FUN.games || [];
 
     const cards = games.map((g) => {
       const external = /^https?:\/\//.test(g.url || "");
+      const soon = !!g.comingSoon;
+      const open = soon
+        ? `<div class="fun-card is-soon" aria-disabled="true">`
+        : `<a class="fun-card" href="${esc(g.url || "#")}"${external ? ' target="_blank" rel="noopener"' : ""}>`;
       return `
-      <a class="fun-card" href="${esc(g.url || "#")}"${external ? ' target="_blank" rel="noopener"' : ""}>
+      ${open}
         <div class="fun-cover" style="background:${esc(g.color || "var(--line)")}">
           ${g.cover ? `<img src="${esc(g.cover)}" alt="" loading="lazy" />` : ""}
-          <span class="fun-play">${ui("play")}</span>
+          ${soon ? tapes(ui("soon")) : `<span class="fun-play">${ui("play")}</span>`}
         </div>
         <div class="fun-body">
           <div class="fun-meta"><span>${esc(g.madeWith)}</span></div>
           <h3>${esc(g.title)}</h3>
-          <p>${esc(g.tagline)}</p>
+          ${soon ? "" : `<p>${esc(g.tagline)}</p>`}
           ${g.tags && g.tags.length ? `<div class="tags">${g.tags.map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>` : ""}
         </div>
-      </a>`;
+      ${soon ? "</div>" : "</a>"}`;
     });
 
     $("#games").innerHTML = cards.join("");
