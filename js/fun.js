@@ -40,6 +40,7 @@
 
   let lang = new URLSearchParams(location.search).get("lang") || store.get() || "en";
   if (!UI[lang]) lang = "en";
+  if (new URLSearchParams(location.search).has("lang")) store.set(lang); // link com ?lang=pt mantém o idioma nas outras páginas
 
   const t = (v) =>
     v && typeof v === "object" && !Array.isArray(v) ? v[lang] ?? v.pt ?? v.en ?? "" : v ?? "";

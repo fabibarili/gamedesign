@@ -77,12 +77,13 @@
   };
   try { localStorage.removeItem("lang"); } catch {}
 
-  // Português desativado por enquanto: o site fica só em inglês e o
-  // seletor de idioma é escondido. Troque para true para reativar.
-  const PT_ENABLED = false;
+  // Português ligado: aparece o seletor EN/PT. Troque para false para
+  // deixar o site só em inglês e esconder o seletor.
+  const PT_ENABLED = true;
 
   let lang = new URLSearchParams(location.search).get("lang") || store.get() || "en";
   if (!UI[lang] || (!PT_ENABLED && lang === "pt")) lang = "en";
+  if (new URLSearchParams(location.search).has("lang")) store.set(lang); // link com ?lang=pt mantém o idioma nas outras páginas
   if (!PT_ENABLED) document.querySelectorAll(".lang-switch").forEach((el) => el.remove());
 
   // Texto traduzível: string simples ou { pt, en }
