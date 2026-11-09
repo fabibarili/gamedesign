@@ -38,8 +38,8 @@
     set(v) { try { sessionStorage.setItem("lang", v); } catch {} },
   };
 
-  let lang = new URLSearchParams(location.search).get("lang") || store.get() || "pt";
-  if (!UI[lang]) lang = "pt";
+  let lang = new URLSearchParams(location.search).get("lang") || store.get() || "en";
+  if (!UI[lang]) lang = "en";
 
   const t = (v) =>
     v && typeof v === "object" && !Array.isArray(v) ? v[lang] ?? v.pt ?? v.en ?? "" : v ?? "";
