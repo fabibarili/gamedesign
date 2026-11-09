@@ -77,9 +77,9 @@
   };
   try { localStorage.removeItem("lang"); } catch {}
 
-  // Português ligado: aparece o seletor EN/PT. Troque para false para
-  // deixar o site só em inglês e esconder o seletor.
-  const PT_ENABLED = true;
+  // Português desativado por enquanto: o site fica só em inglês e o
+  // seletor de idioma é escondido. Troque para true para reativar.
+  const PT_ENABLED = false;
 
   let lang = new URLSearchParams(location.search).get("lang") || store.get() || "en";
   if (!UI[lang] || (!PT_ENABLED && lang === "pt")) lang = "en";
