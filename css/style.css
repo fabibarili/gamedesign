@@ -616,9 +616,9 @@ a { color: inherit; }
 
 /* Botão para a página "Just for fun!" (hero)
    Texto igual ao título da fun.html (fonte display + marca-texto em "fun!")
-   e contorno grosso com sombra sólida no azul mais escuro da paleta */
+   e contorno grosso com sombra sólida no mesmo azul do "Game Designer" */
 .btn.btn-fun {
-  --fun-edge: #1b365d;
+  --fun-edge: var(--accent);
   gap: 0.28em; /* espaço normal entre "for" e "fun!" (o gap de 8px dos outros botões ficava largo) */
   font-family: "Bricolage Grotesque", var(--font);
   font-weight: 800;
@@ -627,10 +627,6 @@ a { color: inherit; }
   padding: 9px 19px;
   box-shadow: 3px 3px 0 var(--fun-edge);
   transition: transform 0.15s, box-shadow 0.15s;
-}
-@media (prefers-color-scheme: dark) {
-  /* no tema escuro o fundo do botão já é #1b365d, então usa o azul #005a9c */
-  .btn.btn-fun { --fun-edge: #005a9c; }
 }
 .btn.btn-fun:hover {
   transform: translate(-2px, -2px);
