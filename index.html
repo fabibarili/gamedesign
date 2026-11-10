@@ -49,7 +49,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,800&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css?v=8" />
+  <link rel="stylesheet" href="css/style.css?v=9" />
 </head>
 <body>
   <header class="site-header">
@@ -63,6 +63,8 @@
           <a href="#contato" data-i18n="navContact">Contact</a>
           <a href="fun.html" class="nav-fun" data-i18n="navFun" hidden>Just for fun!</a>
         </nav>
+        <!-- Só no celular: aparece aqui quando o botão do topo sai da tela -->
+        <a href="fun.html" class="btn btn-fun header-fun">Just for <span class="hl">fun!</span></a>
         <div class="lang-switch" role="group" aria-label="Idioma / Language">
           <button type="button" data-lang="en" aria-pressed="true">EN</button>
           <button type="button" data-lang="pt" aria-pressed="false">PT</button>
@@ -128,6 +130,6 @@
   </footer>
 
   <script src="js/games.js"></script>
-  <script src="js/main.js?v=4"></script>
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>

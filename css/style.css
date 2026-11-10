@@ -658,6 +658,28 @@ a { color: inherit; }
   .btn-fun .hl::before { background: var(--accent-soft); opacity: 0.35; }
 }
 @keyframes fun-mark { to { transform: rotate(-2deg) scaleX(1); } }
+
+/* Cópia do botão no cabeçalho, só no celular: aparece quando o botão
+   do topo da home sai da tela ao rolar (classe .show-fun no header) */
+.header-fun { display: none; }
+@media (max-width: 560px) {
+  .header-fun {
+    display: inline-flex;
+    font-size: 0.82rem;
+    padding: 6px 14px;
+    box-shadow: 2px 2px 0 var(--fun-edge);
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-6px);
+    transition: opacity 0.25s, transform 0.25s, visibility 0s 0.25s;
+  }
+  .site-header.show-fun .header-fun {
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition: opacity 0.25s, transform 0.25s;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .btn-fun .hl::before { animation: none; transform: rotate(-2deg); }
 }

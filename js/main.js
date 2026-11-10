@@ -293,6 +293,24 @@
     els.forEach((el) => io.observe(el));
   }
 
+  // ---------- Botão "Just for fun!" no cabeçalho (celular) ----------
+  // Mostra a cópia do cabeçalho quando o botão do topo da home sai da tela.
+  function setupHeaderFun() {
+    const heroBtn = document.querySelector(".hero .btn-fun");
+    const header = document.querySelector(".site-header");
+    if (!heroBtn || !header || !document.querySelector(".header-fun")) return;
+    let queued = false;
+    const update = () => {
+      queued = false;
+      header.classList.toggle("show-fun", heroBtn.getBoundingClientRect().bottom < header.offsetHeight);
+    };
+    const queue = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
+    addEventListener("scroll", queue, { passive: true });
+    addEventListener("resize", queue);
+    update();
+  }
+  setupHeaderFun();
+
   function render(instant) {
     renderShared();
     if ($("#games")) renderHome();
