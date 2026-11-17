@@ -87,7 +87,7 @@ const FUN = {
     // },
     {
       id: "iron-pablito",
-      title: "Iron 70.3",
+      title: "Ironman 140.6",
       tagline: {
         pt: "Ajude o Pablo a nadar, pedalar e correr até a linha de chegada.",
         en: "Help Pablo swim, bike and run all the way to the finish line.",
