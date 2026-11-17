@@ -86,6 +86,19 @@ const FUN = {
     //   tags: [{ pt: "Plataforma", en: "Platformer" }, "Pixel art", "Mobile"],
     // },
     {
+      id: "iron-pablito",
+      title: "Iron 70.3",
+      tagline: {
+        pt: "Ajude o Pablo a nadar, pedalar e correr até a linha de chegada.",
+        en: "Help Pablo swim, bike and run all the way to the finish line.",
+      },
+      cover: "assets/fun/iron-pablito.png",
+      color: "#24346e",
+      url: "jogos/iron-pablito/iron-swim.html",
+      madeWith: "HTML5",
+      tags: [{ pt: "Triatlo", en: "Triathlon" }, "Pixel art", "Mobile"],
+    },
+    {
       id: "missao-casamento",
       title: "Missão Casamento",
       tagline: {

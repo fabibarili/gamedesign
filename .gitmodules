@@ -10,3 +10,7 @@
 	path = jogos/bellinha
 	url = https://github.com/fabibarili/bellinha-game.git
 	branch = main
+[submodule "jogos/iron-pablito"]
+	path = jogos/iron-pablito
+	url = https://github.com/fabibarili/iron-pablito.git
+	branch = main
