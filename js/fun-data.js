@@ -70,21 +70,6 @@ const FUN = {
     //   madeWith: "Unity",
     //   tags: ["Puzzle", "Game Jam"],
     // },
-    // GUIDO — fora do site por enquanto. Para voltar, tire os "// " destas linhas.
-    // {
-    //   id: "guido-coffee",
-    //   title: "Guido — Aventura do Café",
-    //   tagline: {
-    //     pt: "Ajude o Guido a coletar grãos de café para a cafeteria.",
-    //     en: "Help Guido collect coffee beans for the café.",
-    //   },
-    //   cover: "assets/fun/guido-coffee.png",
-    //   color: "#4fb0f0",
-    //   url: "jogos/guido/",
-    //   comingSoon: true,
-    //   madeWith: "HTML5",
-    //   tags: [{ pt: "Plataforma", en: "Platformer" }, "Pixel art", "Mobile"],
-    // },
     {
       id: "iron-pablito",
       title: "Ironman 140.6",
@@ -97,6 +82,19 @@ const FUN = {
       url: "jogos/iron-pablito/iron-swim.html",
       madeWith: "HTML5",
       tags: [{ pt: "Triatlo", en: "Triathlon" }, "Pixel art", "Mobile"],
+    },
+    {
+      id: "guido-coffee",
+      title: "Guido — Aventura do Café",
+      tagline: {
+        pt: "Ajude o Guido a coletar grãos de café para a cafeteria.",
+        en: "Help Guido collect coffee beans for the café.",
+      },
+      cover: "assets/fun/guido-coffee.png",
+      color: "#4fb0f0",
+      url: "jogos/guido/",
+      madeWith: "HTML5",
+      tags: [{ pt: "Plataforma", en: "Platformer" }, "Pixel art", "Mobile"],
     },
     {
       id: "missao-casamento",
