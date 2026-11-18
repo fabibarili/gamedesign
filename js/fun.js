@@ -38,7 +38,27 @@
     set(v) { try { sessionStorage.setItem("lang", v); } catch {} },
   };
 
-  let lang = new URLSearchParams(location.search).get("lang") || store.get() || "en";
+  // Detecta se a pessoa está no Brasil pelo fuso horário do aparelho (não faz
+  // nenhuma requisição externa). Se o fuso não estiver disponível, usa o idioma
+  // do navegador (pt-BR) como pista. Quem está fora do Brasil vê em inglês.
+  const BR_TIMEZONES = [
+    "America/Sao_Paulo", "America/Rio_Branco", "America/Manaus", "America/Porto_Velho",
+    "America/Boa_Vista", "America/Eirunepe", "America/Cuiaba", "America/Campo_Grande",
+    "America/Belem", "America/Santarem", "America/Araguaina", "America/Fortaleza",
+    "America/Recife", "America/Maceio", "America/Bahia", "America/Noronha", "Brazil/East",
+    "Brazil/West", "Brazil/Acre", "Brazil/DeNoronha",
+  ];
+  function detectLang() {
+    try {
+      const tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      if (tz) return BR_TIMEZONES.includes(tz) ? "pt" : "en";
+    } catch {}
+    const langs = navigator.languages || [navigator.language || ""];
+    return langs.some((l) => /^pt-br$/i.test(l)) ? "pt" : "en";
+  }
+
+  // Ordem: ?lang= na URL > escolha manual nesta aba > detecção automática.
+  let lang = new URLSearchParams(location.search).get("lang") || store.get() || detectLang();
   if (!UI[lang]) lang = "en";
   if (new URLSearchParams(location.search).has("lang")) store.set(lang); // link com ?lang=pt mantém o idioma nas outras páginas
 
