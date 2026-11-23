@@ -5,6 +5,9 @@
   const TAGS_LIMITE = [...TAGS, 'Parcelas'];
   const TABELAS = ['salarios', 'lancamentos', 'contas', 'pagamentos', 'parcelamentos', 'limites'];
   const MENU = [['resumo', 'Resumo'], ['extrato', 'Extrato'], ['pagar', 'Contas a pagar'], ['fixas', 'Contas fixas'], ['parcelas', 'Parcelas'], ['guardado', 'Guardado'], ['limites', 'Limites por tag'], ['salario', 'Salário']];
+  const CARTAO = 'Cartão de crédito';
+  const LISTA_PAGAR = ['Luz', CARTAO, 'Unimed', 'Internet + Telefone', 'Condomínio', 'Contabilidade', 'Imposto', 'INSS'];
+  const CONTAS_CREDITO = ['Academia', 'Spotify + Youtube'];
   const MESES = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
   const CURTOS = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
 
@@ -100,7 +103,7 @@
       db.lancamentos.push({ id: id(), tipo: 'debito', valor, descricao: `Compra ${tag}`, data: dia(10 + i), tag });
     });
     db.lancamentos.push({ id: id(), tipo: 'credito', valor: 600, descricao: 'Freela', data: dia(5), tag: 'Entradas' });
-    [['Aluguel', 1900, 5], ['Condomínio', 480, 8], ['Internet + Celular', 180, 10], ['Plano de saúde', 300, 12], ['Luz', 180, 25]].forEach(([nome, valor, d]) => {
+    [['Condomínio', 480, 8], ['Internet + Telefone', 180, 10], ['Unimed', 300, 12], ['Luz', 180, 25], ['Academia', 100, 10], ['Spotify + Youtube', 40, 10], ['Vaga do carro', 60, 10]].forEach(([nome, valor, d]) => {
       db.contas.push({ id: id(), nome, valor, dia: d, inicio: addMes(m, -5), fim: null });
     });
     [['Notebook', 4800, -2, 12], ['Geladeira', 3000, -6, 10], ['Raquete de padel', 1200, -1, 4]].forEach(([descricao, total, o, vezes]) => {
@@ -150,10 +153,13 @@
     return melhor ? cents(melhor.valor) : 0;
   }
   const lancDoMes = (m) => db.lancamentos.filter((l) => mesDe(l.data) === m);
-  const contasDoMes = (m) => db.contas.filter((c) => c.inicio <= m && (!c.fim || c.fim >= m)).sort((a, b) => a.dia - b.dia);
+  const contasDoMes = (m) => db.contas.filter((c) => c.inicio <= m && (!c.fim || c.fim >= m)).sort((a, b) => a.nome.localeCompare(b.nome, 'pt-BR'));
   // Conta com percentual (ex.: imposto) acompanha o salário do mês.
   const valorConta = (c, m) => (c.percentual == null ? cents(c.valor) : Math.round(salario(m) * Math.round(Number(c.percentual) * 100) / 10000));
   const pctTexto = (c) => (oculto ? 'calculado do salário' : `${Number(c.percentual).toLocaleString('pt-BR', { maximumFractionDigits: 2 })}% do salário`);
+
+  const normaliza = (s) => String(s).normalize('NFD').replace(/[̀-ͯ]/g, '').trim().toLowerCase();
+  const ehCredito = (c) => CONTAS_CREDITO.some((n) => normaliza(n) === normaliza(c.nome));
 
   function parcelaNoMes(p, m) {
     const n = idxMes(m) - idxMes(mesDe(p.data)) + 1;
@@ -198,9 +204,16 @@
 
   function itensAPagar(m) {
     const itens = [];
-    const cartao = totalParcelas(m);
-    if (cartao > 0) itens.push({ chave: 'cartao', nome: 'Cartão', sub: 'Parcelas do mês', valor: cartao });
-    contasDoMes(m).forEach((c) => itens.push({ chave: c.id, nome: c.nome, sub: `Vence dia ${c.dia}`, valor: valorConta(c, m), conta: c }));
+    const contas = contasDoMes(m);
+    const noCredito = contas.filter(ehCredito);
+    const cartao = totalParcelas(m) + noCredito.reduce((s, c) => s + valorConta(c, m), 0);
+    LISTA_PAGAR.forEach((nome) => {
+      if (nome === CARTAO) {
+        if (cartao > 0) itens.push({ chave: 'cartao', nome, sub: noCredito.length ? `Parcelas, ${noCredito.map((c) => c.nome).join(', ')}` : 'Parcelas do mês', valor: cartao });
+        return;
+      }
+      contas.filter((c) => normaliza(c.nome) === normaliza(nome)).forEach((c) => itens.push({ chave: c.id, nome: c.nome, sub: '', valor: valorConta(c, m), conta: c }));
+    });
     return itens.map((i) => ({ ...i, pago: db.pagamentos.some((p) => p.mes === m && p.chave === i.chave) }));
   }
 
@@ -260,20 +273,17 @@
     const itens = itensAPagar(ui.mes);
     const pago = itens.filter((i) => i.pago).reduce((s, i) => s + i.valor, 0);
     const total = itens.reduce((s, i) => s + i.valor, 0);
-    const linhas = itens.map((i) => `<div class="row ${i.pago ? 'paid' : ''}"><button class="check" role="checkbox" aria-checked="${i.pago}" aria-label="${i.pago ? 'Desmarcar' : 'Marcar como paga:'} ${esc(i.nome)}" data-act="pagar" data-chave="${esc(i.chave)}"><span>${i.pago ? '✓' : ''}</span></button><span class="grow"><span class="name">${esc(i.nome)}</span><p class="sub">${esc(i.sub)}</p></span><span class="val">${brl(i.valor)}</span></div>`).join('');
-    const sugestoes = ['Luz', 'Internet + Celular', 'Plano de saúde'].filter((n) => !db.contas.some((c) => c.nome === n));
-    const atalhos = sugestoes.length ? `<div class="chips">${sugestoes.map((n) => `<button class="chip" data-act="nova-conta" data-nome="${esc(n)}">+ ${esc(n)}</button>`).join('')}</div>` : '';
-    return `${cabeca('Contas a pagar', '<button class="ghost" data-act="nova-conta">Adicionar</button>')}
+    const linhas = itens.map((i) => `<div class="row ${i.pago ? 'paid' : ''}"><button class="check" role="checkbox" aria-checked="${i.pago}" aria-label="${i.pago ? 'Desmarcar' : 'Marcar como paga:'} ${esc(i.nome)}" data-act="pagar" data-chave="${esc(i.chave)}"><span>${i.pago ? '✓' : ''}</span></button><span class="grow"><span class="name">${esc(i.nome)}</span>${i.sub ? `<p class="sub">${esc(i.sub)}</p>` : ''}</span><span class="val">${brl(i.valor)}</span></div>`).join('');
+    return `${cabeca('Contas a pagar')}
       <div class="stats"><section class="card"><span class="lab">Já paguei</span><span class="big green">${brl(pago)}</span></section><section class="card"><span class="lab">Falta pagar</span><span class="big amber">${brl(total - pago)}</span></section></div>
-      ${atalhos}
-      <section class="card list">${linhas || '<p class="empty">Cadastre suas contas para marcar o que já pagou.</p>'}</section>
+      <section class="card list">${linhas || '<p class="empty">Nenhuma conta para pagar neste mês.</p>'}</section>
       <button class="link" data-act="ir" data-view="fixas">Ver contas fixas</button>`;
   }
 
   function vFixas() {
     const contas = contasDoMes(ui.mes);
     const total = contas.reduce((s, c) => s + valorConta(c, ui.mes), 0);
-    const linhas = contas.map((c) => `<button class="row" data-act="editar-conta" data-id="${esc(c.id)}"><span class="grow"><span class="name">${esc(c.nome)}</span><p class="sub">Vence dia ${c.dia}${c.percentual == null ? '' : ` · ${pctTexto(c)}`}</p></span><span class="val">${brl(valorConta(c, ui.mes))}</span></button>`).join('');
+    const linhas = contas.map((c) => `<button class="row" data-act="editar-conta" data-id="${esc(c.id)}"><span class="grow"><span class="name">${esc(c.nome)}</span>${ehCredito(c) || c.percentual != null ? `<p class="sub">${ehCredito(c) ? 'No cartão de crédito' : pctTexto(c)}</p>` : ''}</span><span class="val">${brl(valorConta(c, ui.mes))}</span></button>`).join('');
     return `${cabeca('Contas fixas', '<button class="ghost" data-act="nova-conta">Adicionar</button>')}
       <section class="card"><span class="lab">Total por mês</span><span class="big">${brl(total)}</span></section>
       <section class="card list">${linhas || '<p class="empty">Nenhuma conta fixa cadastrada.</p>'}</section>`;
@@ -388,8 +398,7 @@
   function sheetConta(c, nome = '') {
     abrirSheet(`<form data-form="conta" data-id="${esc(c?.id || '')}" novalidate>${topoSheet(c ? 'Editar conta' : 'Nova conta')}
       <label class="field">Nome da conta<input class="inp" name="nome" maxlength="60" placeholder="Ex.: academia" value="${esc(c?.nome || nome)}"></label>
-      <div class="two"><label class="field">${c && c.percentual != null ? `Valor (${pctTexto(c)})` : 'Valor (R$)'}<input class="inp" name="valor" inputmode="decimal" autocomplete="off" placeholder="0,00" ${c && c.percentual != null ? 'readonly' : ''} value="${c ? inputMoney(valorConta(c, ui.mes)) : ''}"></label>
-      <label class="field">Dia do vencimento<input class="inp" type="number" name="dia" min="1" max="31" value="${c?.dia || ''}"></label></div>
+      <label class="field">${c && c.percentual != null ? `Valor (${pctTexto(c)})` : 'Valor (R$)'}<input class="inp" name="valor" inputmode="decimal" autocomplete="off" placeholder="0,00" ${c && c.percentual != null ? 'readonly' : ''} value="${c ? inputMoney(valorConta(c, ui.mes)) : ''}"></label>      ${c && c.percentual == null ? `<p class="sub">O novo valor vale de ${soMes(ui.mes).toLowerCase()} em diante. Meses já editados mantêm o próprio valor.</p>` : ''}
       <button class="btn">Salvar</button>
       ${c ? `<button type="button" class="danger" data-act="apagar-conta" data-id="${esc(c.id)}">Remover a partir deste mês</button>` : ''}</form>`);
   }
@@ -447,6 +456,41 @@
     } catch (e) { db.pagamentos = antes; render(); erro(e); }
   }
 
+  // Uma conta pode ter vários trechos seguidos, cada um com o seu valor.
+  function serieConta(c) {
+    const serie = [c];
+    for (let a = c, ant; (ant = db.contas.find((x) => x.nome === a.nome && x.fim && addMes(x.fim, 1) === a.inicio)); a = ant) serie.unshift(ant);
+    for (let a = c, prox; a.fim && (prox = db.contas.find((x) => x.nome === a.nome && x.inicio === addMes(a.fim, 1))); a = prox) serie.push(prox);
+    return serie;
+  }
+
+  // Mudar o valor vale do mês aberto em diante, até o próximo mês com valor próprio.
+  async function salvarConta(c, dados, valor) {
+    const m = ui.mes;
+    for (const x of serieConta(c)) {
+      if (x.id !== c.id && x.nome !== dados.nome) trocaLinha('contas', await api.atualizar('contas', x.id, dados));
+    }
+    if (c.percentual != null || valor === cents(c.valor)) return trocaLinha('contas', await api.atualizar('contas', c.id, dados));
+    if (c.inicio === m) return trocaLinha('contas', await api.atualizar('contas', c.id, { ...dados, valor: valor / 100 }));
+
+    const fimOriginal = c.fim;
+    trocaLinha('contas', await api.atualizar('contas', c.id, { ...dados, fim: addMes(m, -1) }));
+    let nova;
+    try {
+      nova = await api.inserir('contas', { ...dados, valor: valor / 100, inicio: m, fim: fimOriginal });
+    } catch (e) {
+      trocaLinha('contas', await api.atualizar('contas', c.id, { fim: fimOriginal }));
+      throw e;
+    }
+    db.contas.push(nova);
+    // Os pagamentos já marcados acompanham o novo trecho.
+    for (const p of db.pagamentos.filter((x) => x.chave === c.id && x.mes >= m && (!fimOriginal || x.mes <= fimOriginal))) {
+      await api.inserir('pagamentos', { mes: p.mes, chave: nova.id });
+      await api.apagar('pagamentos', { mes: p.mes, chave: c.id });
+      p.chave = nova.id;
+    }
+  }
+
   const FORMS = {
     async login(f) {
       const email = f.email.value.trim();
@@ -482,15 +526,12 @@
     async conta(f) {
       const valor = parseMoney(f.valor.value);
       const nome = f.nome.value.trim();
-      const dia = Number(f.dia.value);
       if (!nome) return invalido(f, 'Informe o nome da conta.');
       if (valor === null) return invalido(f, 'Informe um valor válido.');
-      if (!Number.isInteger(dia) || dia < 1 || dia > 31) return invalido(f, 'O dia deve ser de 1 a 31.');
       const id = f.dataset.id;
-      const calculada = id && db.contas.find((x) => String(x.id) === id)?.percentual != null;
-      const row = calculada ? { nome, dia } : { nome, valor: valor / 100, dia };
-      if (id) trocaLinha('contas', await api.atualizar('contas', id, row));
-      else db.contas.push(await api.inserir('contas', { ...row, inicio: ui.mes, fim: null }));
+      if (id) await salvarConta(db.contas.find((x) => String(x.id) === id), { nome }, valor);
+      // O banco ainda exige um dia, mas o app não usa mais vencimento.
+      else db.contas.push(await api.inserir('contas', { nome, dia: 1, valor: valor / 100, inicio: ui.mes, fim: null }));
       fecharSheet(); render(); toast('Conta salva.');
     },
     async parcela(f) {
@@ -578,11 +619,13 @@
     async 'apagar-conta'(b) {
       if (!confirm('Remover esta conta a partir deste mês? Os meses anteriores continuam iguais.')) return;
       const c = db.contas.find((x) => String(x.id) === b.dataset.id);
-      if (c.inicio >= ui.mes) {
-        await api.apagar('contas', { id: c.id });
-        db.contas = db.contas.filter((x) => x.id !== c.id);
-      } else {
-        trocaLinha('contas', await api.atualizar('contas', c.id, { fim: addMes(ui.mes, -1) }));
+      for (const x of serieConta(c)) {
+        if (x.inicio >= ui.mes) {
+          await api.apagar('contas', { id: x.id });
+          db.contas = db.contas.filter((y) => y.id !== x.id);
+        } else if (!x.fim || x.fim >= ui.mes) {
+          trocaLinha('contas', await api.atualizar('contas', x.id, { fim: addMes(ui.mes, -1) }));
+        }
       }
       fecharSheet(); render(); toast('Conta removida.');
     },
