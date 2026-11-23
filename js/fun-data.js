@@ -71,6 +71,19 @@ const FUN = {
     //   tags: ["Puzzle", "Game Jam"],
     // },
     {
+      id: "kizi-bday",
+      title: "Kizi B-Day",
+      tagline: {
+        pt: "Escolha o presente de B-Day da Kizi, ela vai amar.",
+        en: "Pick Kizi's B-Day gift, she's going to love it.",
+      },
+      cover: "assets/fun/kizi-bday.png",
+      color: "#1b1440",
+      url: "jogos/kizi-bday/",
+      madeWith: "HTML5",
+      tags: [{ pt: "Aniversário", en: "Birthday" }, "Pixel art", "Mobile"],
+    },
+    {
       id: "iron-pablito",
       title: "Ironman 140.6",
       tagline: {

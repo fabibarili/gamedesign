@@ -14,3 +14,7 @@
 	path = jogos/iron-pablito
 	url = https://github.com/fabibarili/iron-pablito.git
 	branch = main
+[submodule "jogos/kizi-bday"]
+	path = jogos/kizi-bday
+	url = https://github.com/fabibarili/kizi-bday.git
+	branch = main
