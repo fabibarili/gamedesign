@@ -186,21 +186,22 @@
     const parcelas = totalParcelas(m);
     const entradas = sal + creditos;
     const despesas = gastos + fixas + parcelas;
-    return { sal, creditos, gastos, fixas, parcelas, entradas, despesas, saldo: entradas - despesas };
+    return { sal, creditos, gastos, fixas, parcelas, entradas, despesas, saldo: entradas - despesas, sobra: sal - despesas };
   }
 
-  function mesesFechados() {
+  // Do primeiro mês com dados até o mês atual, com o que sobrou do salário em cada um.
+  function mesesGuardado() {
     const marcos = [...db.salarios.map((s) => s.mes), ...db.lancamentos.map((l) => mesDe(l.data))].sort();
     if (!marcos.length) return [];
-    const fim = idxMes(mesAtual()) - 1;
+    const fim = idxMes(mesAtual());
     const lista = [];
     for (let i = fim; i >= Math.max(idxMes(marcos[0]), idxMes(MES_INICIAL)); i--) {
       const m = deIdx(i);
-      lista.push({ m, saldo: contaMes(m).saldo });
+      lista.push({ m, sobra: contaMes(m).sobra });
     }
     return lista;
   }
-  const totalGuardado = () => mesesFechados().reduce((s, x) => s + x.saldo, 0);
+  const totalGuardado = () => mesesGuardado().reduce((s, x) => s + x.sobra, 0);
 
   function itensAPagar(m) {
     const itens = [];
@@ -245,8 +246,7 @@
           ${linhaLink('salario', `Salário de ${soMes(ui.mes).toLowerCase()}`, brl(c.sal), '', ' <span class="green">· Editar</span>')}
           ${linhaLink('fixas', 'Contas fixas', brl(c.fixas))}
           ${linhaLink('parcelas', 'Parcelas do cartão', brl(c.parcelas))}
-          ${linhaLink('extrato', 'Gastos do dia a dia', brl(c.gastos))}
-          ${linhaLink('guardado', 'Total guardado', brl(totalGuardado()), 'green')}
+          ${linhaLink('guardado', 'Total guardado', brl(totalGuardado()), totalGuardado() < 0 ? 'red' : 'green')}
         </section>
         <section class="card"><div class="head"><h2 class="h2">Gastos por tag</h2><button class="link" data-act="ir" data-view="limites">Editar limites</button></div>
           <div class="tags-list">${linhasTag}</div></section>
@@ -305,14 +305,15 @@
   function vGuardado() {
     const atual = mesAtual();
     const c = contaMes(atual);
-    const fechados = mesesFechados();
-    const linhas = fechados.map((x) => `<div class="row"><span>${nomeMes(x.m)}</span><span class="val ${x.saldo < 0 ? 'red' : ''}">${brl(x.saldo)}</span></div>`).join('');
+    const fechados = mesesGuardado().filter((x) => x.m !== atual);
+    const total = totalGuardado();
+    const linhas = fechados.map((x) => `<div class="row"><span>${nomeMes(x.m)}</span><span class="val ${x.sobra < 0 ? 'red' : ''}">${brl(x.sobra)}</span></div>`).join('');
     return `<header class="head"><h1 class="title">Guardado</h1></header>
-      <section class="card"><span class="lab">Total guardado</span><span class="big hero green">${brl(totalGuardado())}</span></section>
+      <section class="card"><span class="lab">Total guardado</span><span class="big hero ${total < 0 ? 'red' : 'green'}">${brl(total)}</span></section>
       <div class="cols"><section class="card list"><h2 class="h2">${soMes(atual)}, mês em andamento</h2>
-        <div class="row"><span>Entradas</span><span class="val">${brl(c.entradas)}</span></div>
+        <div class="row"><span>Salário</span><span class="val">${brl(c.sal)}</span></div>
         <div class="row"><span>Despesas</span><span class="val">− ${brl(c.despesas)}</span></div>
-        <div class="row"><strong>Sobrando até agora</strong><strong class="val ${c.saldo < 0 ? 'red' : 'green'}">${brl(c.saldo)}</strong></div></section>
+        <div class="row"><strong>Sobrando até agora</strong><strong class="val ${c.sobra < 0 ? 'red' : 'green'}">${brl(c.sobra)}</strong></div></section>
       <section class="card list"><h2 class="h2">Meses fechados</h2>${linhas || '<p class="empty">O primeiro mês entra aqui quando fechar.</p>'}</section></div>`;
   }
 
