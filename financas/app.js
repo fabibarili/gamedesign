@@ -4,7 +4,7 @@
   const TAGS = ['Mercado', 'Farmácia', 'Gasolina', 'Lazer', 'Casa', 'Padel', 'Outros'];
   const TAGS_LIMITE = [...TAGS, 'Parcelas'];
   const TABELAS = ['salarios', 'lancamentos', 'contas', 'pagamentos', 'parcelamentos', 'limites'];
-  const MENU = [['resumo', 'Resumo'], ['extrato', 'Extrato'], ['pagar', 'Contas a pagar'], ['fixas', 'Contas fixas'], ['parcelas', 'Parcelas'], ['guardado', 'Guardado'], ['limites', 'Limites por tag'], ['salario', 'Salário']];
+  const MENU = [['resumo', 'Resumo'], ['extrato', 'Extrato'], ['pagar', 'Contas a pagar'], ['fixas', 'Contas fixas'], ['parcelas', 'Parcelas'], ['guardado', 'Guardado'], ['acumulado', 'Acumulado'], ['limites', 'Limites por tag'], ['salario', 'Salário']];
   const CARTAO = 'Cartão de crédito';
   const LISTA_PAGAR = ['Luz', CARTAO, 'Unimed', 'Internet + Telefone', 'Condomínio', 'Contabilidade', 'Imposto', 'INSS'];
   const CONTAS_CREDITO = ['Academia', 'Spotify + Youtube'];
@@ -336,6 +336,17 @@
       <section class="card list"><h2 class="h2">Meses fechados</h2>${linhas || '<p class="empty">O primeiro mês entra aqui quando fechar.</p>'}</section></div>`;
   }
 
+  // Do mês mais antigo ao atual: quanto sobrou em cada mês e quanto já soma até ali.
+  function vAcumulado() {
+    const atual = mesAtual();
+    let soma = 0;
+    const meses = mesesGuardado().reverse().map((x) => ({ ...x, acumulado: (soma += x.saldo) }));
+    const linhas = meses.reverse().map((x) => `<div class="row"><span class="grow"><span class="name">${nomeMes(x.m)}</span><p class="sub">${x.m === atual ? 'Em andamento · ' : ''}No mês: <span class="${x.saldo < 0 ? 'red' : ''}">${brl(x.saldo)}</span></p></span><span class="val ${x.acumulado < 0 ? 'red' : ''}">${brl(x.acumulado)}</span></div>`).join('');
+    return `<header class="head"><h1 class="title">Acumulado</h1></header>
+      <section class="card"><span class="lab">Total acumulado até ${soMes(atual).toLowerCase()}</span><span class="big hero ${soma < 0 ? 'red' : 'green'}">${brl(soma)}</span></section>
+      <section class="card list"><div class="head"><h2 class="h2">Mês a mês</h2><span class="sub">Total até o mês</span></div>${linhas || '<p class="empty">Nenhum mês com dados ainda.</p>'}</section>`;
+  }
+
   function vLimites() {
     const lim = Object.fromEntries(db.limites.map((l) => [l.tag, cents(l.valor)]));
     const total = TAGS_LIMITE.reduce((s, t) => s + (lim[t] || 0), 0);
@@ -358,7 +369,7 @@
         <div class="row"><strong>Total</strong><strong class="val green">${brl(c.entradas)}</strong></div></section></div>`;
   }
 
-  const VIEWS = { resumo: vResumo, extrato: vExtrato, pagar: vPagar, fixas: vFixas, parcelas: vParcelas, guardado: vGuardado, limites: vLimites, salario: vSalario };
+  const VIEWS = { resumo: vResumo, extrato: vExtrato, pagar: vPagar, fixas: vFixas, parcelas: vParcelas, guardado: vGuardado, acumulado: vAcumulado, limites: vLimites, salario: vSalario };
 
   function aplicarBarras() {
     $root.querySelectorAll('[data-w]').forEach((el) => { el.style.width = `${el.dataset.w}%`; });
