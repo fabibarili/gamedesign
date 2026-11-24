@@ -103,6 +103,9 @@
       db.lancamentos.push({ id: id(), tipo: 'debito', valor, descricao: `Compra ${tag}`, data: dia(10 + i), tag });
     });
     db.lancamentos.push({ id: id(), tipo: 'credito', valor: 600, descricao: 'Freela', data: dia(5), tag: 'Entradas' });
+    [['Mercado', 340, 'Mercado do mês'], ['Lazer', 160, 'Restaurante']].forEach(([tag, valor, descricao], i) => {
+      db.lancamentos.push({ id: id(), tipo: 'credito', valor, descricao, data: dia(18 + i), tag });
+    });
     [['Condomínio', 480, 8], ['Internet + Telefone', 180, 10], ['Unimed', 300, 12], ['Luz', 180, 25], ['Academia', 100, 10], ['Spotify + Youtube', 40, 10], ['Vaga do carro', 60, 10]].forEach(([nome, valor, d]) => {
       db.contas.push({ id: id(), nome, valor, dia: d, inicio: addMes(m, -5), fim: null });
     });
@@ -177,16 +180,31 @@
     return soma;
   }
 
+  // No banco, tipo 'credito' com a tag Entradas é dinheiro que entrou;
+  // com qualquer outra tag é compra no cartão de crédito, que vai para a fatura.
+  const ehEntrada = (l) => l.tipo === 'credito' && l.tag === 'Entradas';
+  const noCartao = (l) => l.tipo === 'credito' && l.tag !== 'Entradas';
+  const somaLanc = (lista) => lista.reduce((s, x) => s + cents(x.valor), 0);
+
+  // Fatura do cartão: parcelas do mês, contas fixas no crédito e compras no crédito.
+  function fatura(m) {
+    const contas = contasDoMes(m).filter(ehCredito);
+    const parcelas = totalParcelas(m);
+    const compras = somaLanc(lancDoMes(m).filter(noCartao));
+    return { contas, parcelas, compras, total: parcelas + compras + contas.reduce((s, c) => s + valorConta(c, m), 0) };
+  }
+
   function contaMes(m) {
     const l = lancDoMes(m);
     const sal = salario(m);
-    const creditos = l.filter((x) => x.tipo === 'credito').reduce((s, x) => s + cents(x.valor), 0);
-    const gastos = l.filter((x) => x.tipo === 'debito').reduce((s, x) => s + cents(x.valor), 0);
+    const creditos = somaLanc(l.filter(ehEntrada));
+    const gastos = somaLanc(l.filter((x) => x.tipo === 'debito'));
+    const compras = somaLanc(l.filter(noCartao));
     const fixas = contasDoMes(m).reduce((s, c) => s + valorConta(c, m), 0);
     const parcelas = totalParcelas(m);
     const entradas = sal + creditos;
-    const despesas = gastos + fixas + parcelas;
-    return { sal, creditos, gastos, fixas, parcelas, entradas, despesas, saldo: entradas - despesas };
+    const despesas = gastos + compras + fixas + parcelas;
+    return { sal, creditos, gastos, compras, fixas, parcelas, entradas, despesas, saldo: entradas - despesas };
   }
 
   // Do primeiro mês com dados até o mês atual: o saldo de cada mês é o que foi guardado.
@@ -206,11 +224,11 @@
   function itensAPagar(m) {
     const itens = [];
     const contas = contasDoMes(m);
-    const noCredito = contas.filter(ehCredito);
-    const cartao = totalParcelas(m) + noCredito.reduce((s, c) => s + valorConta(c, m), 0);
+    const f = fatura(m);
     LISTA_PAGAR.forEach((nome) => {
       if (nome === CARTAO) {
-        if (cartao > 0) itens.push({ chave: 'cartao', nome, sub: noCredito.length ? `Parcelas, ${noCredito.map((c) => c.nome).join(', ')}` : 'Parcelas do mês', valor: cartao });
+        const partes = [f.parcelas && 'Parcelas', f.compras && 'Compras no crédito', ...f.contas.map((c) => c.nome)].filter(Boolean);
+        if (f.total > 0) itens.push({ chave: 'cartao', nome, sub: partes.join(', '), valor: f.total });
         return;
       }
       contas.filter((c) => normaliza(c.nome) === normaliza(nome)).forEach((c) => itens.push({ chave: c.id, nome: c.nome, sub: '', valor: valorConta(c, m), conta: c }));
@@ -226,7 +244,8 @@
   function vResumo() {
     const c = contaMes(ui.mes);
     const lim = Object.fromEntries(db.limites.map((l) => [l.tag, cents(l.valor)]));
-    const l = lancDoMes(ui.mes).filter((x) => x.tipo === 'debito');
+    const l = lancDoMes(ui.mes).filter((x) => !ehEntrada(x));
+    const fat = fatura(ui.mes);
     const tags = [...TAGS.map((t) => ({ t, v: l.filter((x) => x.tag === t).reduce((s, x) => s + cents(x.valor), 0), lim: lim[t] || 0 })), { t: 'Parcelas', v: c.parcelas, lim: lim.Parcelas || 0 }].sort((a, b) => (oculto ? 0 : b.v - a.v));
     const refMax = Math.max(1, ...tags.map((x) => x.v));
     const linhasTag = tags.map(({ t, v, lim: m }) => {
@@ -245,7 +264,9 @@
         <section class="card list">
           ${linhaLink('salario', `Salário de ${soMes(ui.mes).toLowerCase()}`, brl(c.sal), '', ' <span class="green">· Editar</span>')}
           ${linhaLink('fixas', 'Contas fixas', brl(c.fixas))}
-          ${linhaLink('parcelas', 'Parcelas do cartão', brl(c.parcelas))}        </section>
+          ${linhaLink('parcelas', 'Parcelas do cartão', brl(c.parcelas))}
+          ${linhaLink('pagar', 'Fatura do cartão', brl(fat.total))}
+        </section>
         <section class="card"><div class="head"><h2 class="h2">Gastos por tag</h2><button class="link" data-act="ir" data-view="limites">Editar limites</button></div>
           <div class="tags-list">${linhasTag}</div></section>
       </div>
@@ -259,8 +280,8 @@
     const sal = salario(ui.mes);
     const mostraSal = sal > 0 && (ui.filtro === 'Todos' || ui.filtro === 'Entradas');
     const linhas = lista.map((l) => {
-      const cred = l.tipo === 'credito';
-      return `<button class="row" data-act="editar-lanc" data-id="${esc(l.id)}"><span class="grow"><span class="name">${esc(l.descricao)}</span><p class="sub">${esc(l.tag)} · ${dataCurta(l.data)}</p></span><span class="val ${cred ? 'green' : ''}">${cred ? '+' : '−'} ${brl(cents(l.valor))}</span></button>`;
+      const cred = ehEntrada(l);
+      return `<button class="row" data-act="editar-lanc" data-id="${esc(l.id)}"><span class="grow"><span class="name">${esc(l.descricao)}</span><p class="sub">${esc(l.tag)}${noCartao(l) ? ' · Crédito' : ''} · ${dataCurta(l.data)}</p></span><span class="val ${cred ? 'green' : ''}">${cred ? '+' : '−'} ${brl(cents(l.valor))}</span></button>`;
     }).join('');
     const linhaSal = mostraSal ? `<button class="row" data-act="ir" data-view="salario"><span class="grow"><span class="name">Salário</span><p class="sub">Entradas · ${nomeMes(ui.mes)}</p></span><span class="val green">+ ${brl(sal)}</span></button>` : '';
     const corpo = linhas + linhaSal || '<p class="empty">Nenhum lançamento aqui.</p>';
@@ -377,15 +398,17 @@
   /* ---------- formulários em folha ---------- */
   const dataPadrao = () => (ui.mes === mesDe(hoje()) ? hoje() : `${ui.mes}-01`);
   const topoSheet = (t) => `<div class="sheet-head"><h2>${t}</h2><button type="button" class="close" data-act="fechar">Fechar</button></div>`;
-  const pickTags = (atual) => `<fieldset class="only-debit"><legend>Tag</legend><div class="picks">${TAGS.map((t) => `<label class="pick"><input type="radio" name="tag" value="${t}" ${t === atual ? 'checked' : ''}><span>${t}</span></label>`).join('')}</div></fieldset>`;
+  const pickTags = (atual) => `<fieldset class="only-gasto"><legend>Tag</legend><div class="picks">${TAGS.map((t) => `<label class="pick"><input type="radio" name="tag" value="${t}" ${t === atual ? 'checked' : ''}><span>${t}</span></label>`).join('')}</div></fieldset>`;
 
   function abrirSheet(html) { $sheet.innerHTML = html; if (!$sheet.open) $sheet.showModal(); }
   function fecharSheet() { if ($sheet.open) $sheet.close(); $sheet.innerHTML = ''; }
 
   function sheetLanc(l) {
-    const tipo = l?.tipo || 'debito';
+    const forma = !l ? 'debito' : ehEntrada(l) ? 'entrada' : l.tipo;
+    // Entrada só aparece ao editar um lançamento antigo de entrada.
+    const formas = [['debito', 'Débito'], ['credito', 'Crédito'], ...(forma === 'entrada' ? [['entrada', 'Entrada']] : [])];
     abrirSheet(`<form data-form="lanc" data-id="${esc(l?.id || '')}" novalidate>${topoSheet(l ? 'Editar lançamento' : 'Novo lançamento')}
-      <div class="seg"><label><input type="radio" name="tipo" value="debito" ${tipo === 'debito' ? 'checked' : ''}><span>Débito</span></label><label><input type="radio" name="tipo" value="credito" ${tipo === 'credito' ? 'checked' : ''}><span>Crédito</span></label></div>
+      <fieldset><legend>Pagamento</legend><div class="picks">${formas.map(([v, t]) => `<label class="pick"><input type="radio" name="tipo" value="${v}" ${v === forma ? 'checked' : ''}><span>${t}</span></label>`).join('')}</div></fieldset>
       <label class="field">Valor (R$)<input class="inp" name="valor" inputmode="decimal" autocomplete="off" placeholder="0,00" value="${l ? inputMoney(cents(l.valor)) : ''}"></label>
       <label class="field">Descrição<input class="inp" name="descricao" maxlength="120" placeholder="Ex.: compras da semana" value="${esc(l?.descricao || '')}"></label>
       <label class="field">Data<input class="inp" type="date" name="data" min="${DATA_INICIAL}" value="${l?.data || dataPadrao()}"></label>
@@ -514,8 +537,8 @@
       if (!descricao) return invalido(f, 'Informe uma descrição.');
       if (!f.data.value) return invalido(f, 'Informe a data.');
       if (f.data.value < DATA_INICIAL) return invalido(f, 'Use uma data a partir de 26/11/2026.');
-      const tipo = f.tipo.value;
-      const row = { tipo, valor: valor / 100, descricao, data: f.data.value, tag: tipo === 'credito' ? 'Entradas' : f.tag.value };
+      const forma = f.tipo.value;
+      const row = { tipo: forma === 'entrada' ? 'credito' : forma, valor: valor / 100, descricao, data: f.data.value, tag: forma === 'entrada' ? 'Entradas' : f.tag.value };
       const id = f.dataset.id;
       if (id) trocaLinha('lancamentos', await api.atualizar('lancamentos', id, row));
       else db.lancamentos.push(await api.inserir('lancamentos', row));

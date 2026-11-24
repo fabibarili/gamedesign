@@ -90,7 +90,7 @@ legend{padding:0;margin-bottom:8px;font-size:13px;font-weight:500}
 .pick{position:relative}
 .pick span{min-height:44px;padding:0 14px;display:flex;align-items:center;border:1px solid var(--field);border-radius:22px;font-size:14px;font-weight:500}
 .pick input:checked+span{background:var(--ink);border-color:var(--ink);color:#FFF}
-form:has(input[name=tipo][value=credito]:checked) .only-debit{display:none}
+form:has(input[name=tipo][value=entrada]:checked) .only-gasto{display:none}
 .stepper{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:13px;font-weight:500}
 .stepper>div{display:flex;align-items:center;gap:6px}
 .stepper button{width:44px;height:44px;border:1px solid var(--field);border-radius:50%;background:#FFF;font-size:20px}
