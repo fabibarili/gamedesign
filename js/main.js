@@ -116,6 +116,40 @@
   const tagList = (tags) =>
     `<div class="tags">${(tags || []).map((x) => `<span class="tag">${esc(x)}</span>`).join("")}</div>`;
 
+  // ---------- SEO de cada página de projeto ----------
+  // Título, descrição, canonical e Open Graph próprios para cada case.
+  const SITE = "https://fabibarili.com";
+  const headTag = (selector, create) => {
+    let el = document.head.querySelector(selector);
+    if (!el) { el = create(); document.head.appendChild(el); }
+    return el;
+  };
+  const metaTag = (attr, key, value) => {
+    headTag(`meta[${attr}="${key}"]`, () => {
+      const m = document.createElement("meta");
+      m.setAttribute(attr, key);
+      return m;
+    }).setAttribute("content", value);
+  };
+  function setPageMeta({ title, description, canonical, image, noindex }) {
+    document.title = title;
+    metaTag("property", "og:title", title);
+    if (description) {
+      metaTag("name", "description", description);
+      metaTag("property", "og:description", description);
+    }
+    if (image) metaTag("property", "og:image", image);
+    if (canonical) {
+      headTag('link[rel="canonical"]', () => {
+        const l = document.createElement("link");
+        l.rel = "canonical";
+        return l;
+      }).href = canonical;
+      metaTag("property", "og:url", canonical);
+    }
+    if (noindex) metaTag("name", "robots", "noindex, follow");
+  }
+
   // ---------- Render ----------
   function renderShared() {
     document.documentElement.lang = ui("htmlLang");
@@ -202,7 +236,7 @@
     const g = GAMES[idx];
 
     if (!g) {
-      document.title = "Fabi Barili - Game Designer";
+      setPageMeta({ title: `${ui("notFound")} - Fabi Barili`, noindex: true });
       gameEl.innerHTML = `
         <div class="not-found">
           <h1 class="game-title">${ui("notFound")}</h1>
@@ -212,7 +246,13 @@
       return;
     }
 
-    document.title = "Fabi Barili - Game Designer";
+    const roleAt = [t(g.role), g.studio && `${lang === "pt" ? "na" : "at"} ${t(g.studio)}`].filter(Boolean).join(" ");
+    setPageMeta({
+      title: `${t(g.title)} - Fabi Barili - Game Designer`,
+      description: `${t(g.tagline)} ${roleAt ? `${roleAt}. ` : ""}${lang === "pt" ? "Case de game design de Fabi Barili." : "Game design case study by Fabi Barili."}`,
+      canonical: `${SITE}/game.html?id=${encodeURIComponent(g.id)}`,
+      image: `${SITE}/${g.hero || g.cover || PROFILE.photo}`,
+    });
     const prev = GAMES[(idx - 1 + GAMES.length) % GAMES.length];
     const next = GAMES[(idx + 1) % GAMES.length];
 
